@@ -23,42 +23,26 @@ export const addVehicleController = asyncHandler(async (req, res) => {
             lastMaintenanceDate,
         } = req.body;
 
-        
-
-        // Validate string fields
-        if ([make, model, type, number, color, mainLocation, subLocation].some((val) => typeof val === 'string' && val.trim() === "")) {
-            throw new ApiError(400, "All fields are required");
+        if ([make, model, type, number, color, mainLocation, subLocation].some(val => typeof val !== 'string' || val.trim() === "")) {
+            throw new ApiError(400, "All string fields are required");
         }
 
-
-        const vehicle = await Vehicle.findOne({ number });
-        if (vehicle) {
+        const existingVehicle = await Vehicle.findOne({ number });
+        if (existingVehicle) {
             throw new ApiError(400, "Vehicle with this number already exists");
         }
 
-        let ImageLocalPath;
-        if (
-            req.files &&
-            Array.isArray(req.files.vehicleImage) &&
-            req.files.vehicleImage.length > 0
-        ) {
-            ImageLocalPath = req.files.vehicleImage[0].path;
-        }
-
-        if (!ImageLocalPath) {
+        let imageLocalPath;
+        if (req.files && Array.isArray(req.files.vehicleImage) && req.files.vehicleImage.length > 0) {
+            imageLocalPath = req.files.vehicleImage[0].path;
+        } else {
             throw new ApiError(400, "Vehicle image is required");
         }
 
-        const uploadedImage = await uploadOnCloudinary(ImageLocalPath);
+        const uploadedImage = await uploadOnCloudinary(imageLocalPath);
         if (!uploadedImage) {
             throw new ApiError(500, "Failed to upload image to Cloudinary");
         }
-        const imageId = uploadedImage.public_id;
-        const imageUrl = uploadedImage.secure_url;
-        const image = {
-            imageId: imageId,
-            imageUrl: imageUrl,
-        };
 
         const newVehicle = await Vehicle.create({
             make,
@@ -67,15 +51,19 @@ export const addVehicleController = asyncHandler(async (req, res) => {
             type,
             number,
             color,
-            image,
+            image: {
+                imageId: uploadedImage.public_id,
+                imageUrl: uploadedImage.secure_url,
+            },
             rentalRate,
             mainLocation,
             subLocation,
             lastMaintenanceDate,
         });
-        res.status(201).json({
+
+        return res.status(201).json({
             success: true,
-            data: new ApiResponse(201, null, "Vehicle added successfully"),
+            data: new ApiResponse(201, newVehicle, "Vehicle added successfully"),
         });
     } catch (error) {
         console.error("Error in addVehicleController:", error);
@@ -85,19 +73,20 @@ export const addVehicleController = asyncHandler(async (req, res) => {
                 message: error.message,
                 statusCode: error.statusCode,
             });
-        } else {
-            return res.status(500).json({
-                success: false,
-                message: "Internal Server Error",
-                statusCode: 500,
-            });
         }
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error",
+            statusCode: 500,
+        });
     }
 });
+
 
 export const removeVehicleController = asyncHandler(async (req, res) => {
     try {
         const { vehicleId } = req.params;
+        console.log(vehicleId)
         if (!vehicleId) {
             throw new ApiError(400, "Vehicle ID is required");
         }
@@ -117,6 +106,7 @@ export const removeVehicleController = asyncHandler(async (req, res) => {
             data: new ApiResponse(200, null, "Vehicle removed successfully"),
         });
     } catch (error) {
+        // console.log(error.message);
         if (error instanceof ApiError) {
             res.status(error.statusCode).json({
                 success: false,

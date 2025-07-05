@@ -1,6 +1,8 @@
 import {v2 as cloudinary} from "cloudinary"
 import fs from "fs"
+import dotenv from "dotenv"
 
+dotenv.config();
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -56,7 +58,7 @@ export const deleteFromCloudinary = async(publicId) => {
     try {
         if(!publicId) return null;
         const response = await cloudinary.uploader.destroy(publicId, {
-            resource_type: "auto",
+            resource_type: "image",
         });
         return response;
     } catch (error) {
