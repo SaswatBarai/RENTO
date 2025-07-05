@@ -1,0 +1,362 @@
+[
+  {
+    "_id": "66e1b2c3d4e5f6a708901234",
+    "make": "Toyota",
+    "model": "Camry",
+    "year": 2023,
+    "type": "car",
+    "number": "ABC123",
+    "color": "Silver",
+    "rentalRate": 60,
+    "image": {
+      "imageId": "toyota_camry_2023_silver_001",
+      "imageUrl": "https://example.com/images/cars/toyota_camry_silver.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "New York",
+    "subLocation": "Manhattan",
+    "lastMaintenanceDate": "2025-06-15T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901235",
+    "make": "Honda",
+    "model": "Civic",
+    "year": 2022,
+    "type": "car",
+    "number": "DEF456",
+    "color": "Blue",
+    "rentalRate": 55,
+    "image": {
+      "imageId": "honda_civic_2022_blue_001",
+      "imageUrl": "https://example.com/images/cars/honda_civic_blue.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "New York",
+    "subLocation": "Brooklyn",
+    "lastMaintenanceDate": "2025-05-20T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901236",
+    "make": "Ford",
+    "model": "F-150",
+    "year": 2024,
+    "type": "truck",
+    "number": "GHI789",
+    "color": "Black",
+    "rentalRate": 90,
+    "image": {
+      "imageId": "ford_f150_2024_black_001",
+      "imageUrl": "https://example.com/images/trucks/ford_f150_black.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Chicago",
+    "subLocation": "Downtown",
+    "lastMaintenanceDate": "2025-06-25T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901237",
+    "make": "BMW",
+    "model": "X5",
+    "year": 2023,
+    "type": "car",
+    "number": "JKL012",
+    "color": "White",
+    "rentalRate": 120,
+    "image": {
+      "imageId": "bmw_x5_2023_white_001",
+      "imageUrl": "https://example.com/images/cars/bmw_x5_white.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Los Angeles",
+    "subLocation": "Beverly Hills",
+    "lastMaintenanceDate": "2025-06-10T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901238",
+    "make": "Harley-Davidson",
+    "model": "Sportster",
+    "year": 2022,
+    "type": "bike",
+    "number": "MNO345",
+    "color": "Red",
+    "rentalRate": 75,
+    "image": {
+      "imageId": "harley_sportster_2022_red_001",
+      "imageUrl": "https://example.com/images/bikes/harley_sportster_red.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Miami",
+    "subLocation": "South Beach",
+    "lastMaintenanceDate": "2025-06-05T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901239",
+    "make": "Mercedes-Benz",
+    "model": "Sprinter",
+    "year": 2024,
+    "type": "bus",
+    "number": "PQR678",
+    "color": "Grey",
+    "rentalRate": 150,
+    "image": {
+      "imageId": "mercedes_sprinter_2024_grey_001",
+      "imageUrl": "https://example.com/images/buses/mercedes_sprinter_grey.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Boston",
+    "subLocation": "Downtown",
+    "lastMaintenanceDate": "2025-07-01T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a70890123a",
+    "make": "Chevrolet",
+    "model": "Malibu",
+    "year": 2023,
+    "type": "car",
+    "number": "STU901",
+    "color": "Green",
+    "rentalRate": 58,
+    "image": {
+      "imageId": "chevrolet_malibu_2023_green_001",
+      "imageUrl": "https://example.com/images/cars/chevrolet_malibu_green.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Seattle",
+    "subLocation": "Downtown",
+    "lastMaintenanceDate": "2025-05-15T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a70890123b",
+    "make": "Ducati",
+    "model": "Monster",
+    "year": 2022,
+    "type": "bike",
+    "number": "VWX234",
+    "color": "Black",
+    "rentalRate": 85,
+    "image": {
+      "imageId": "ducati_monster_2022_black_001",
+      "imageUrl": "https://example.com/images/bikes/ducati_monster_black.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "San Francisco",
+    "subLocation": "Marina",
+    "lastMaintenanceDate": "2025-06-20T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a70890123c",
+    "make": "Audi",
+    "model": "A4",
+    "year": 2023,
+    "type": "car",
+    "number": "YZA567",
+    "color": "Silver",
+    "rentalRate": 95,
+    "image": {
+      "imageId": "audi_a4_2023_silver_001",
+      "imageUrl": "https://example.com/images/cars/audi_a4_silver.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Denver",
+    "subLocation": "Cherry Creek",
+    "lastMaintenanceDate": "2025-06-05T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a70890123d",
+    "make": "Volvo",
+    "model": "XC90",
+    "year": 2024,
+    "type": "car",
+    "number": "BCD890",
+    "color": "Blue",
+    "rentalRate": 110,
+    "image": {
+      "imageId": "volvo_xc90_2024_blue_001",
+      "imageUrl": "https://example.com/images/cars/volvo_xc90_blue.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Portland",
+    "subLocation": "Pearl District",
+    "lastMaintenanceDate": "2025-06-30T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a70890123e",
+    "make": "Kawasaki",
+    "model": "Ninja",
+    "year": 2023,
+    "type": "bike",
+    "number": "EFG123",
+    "color": "Green",
+    "rentalRate": 80,
+    "image": {
+      "imageId": "kawasaki_ninja_2023_green_001",
+      "imageUrl": "https://example.com/images/bikes/kawasaki_ninja_green.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Austin",
+    "subLocation": "Downtown",
+    "lastMaintenanceDate": "2025-05-25T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a70890123f",
+    "make": "Tesla",
+    "model": "Model 3",
+    "year": 2024,
+    "type": "car",
+    "number": "HIJ456",
+    "color": "Red",
+    "rentalRate": 125,
+    "image": {
+      "imageId": "tesla_model3_2024_red_001",
+      "imageUrl": "https://example.com/images/cars/tesla_model3_red.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "San Jose",
+    "subLocation": "Santana Row",
+    "lastMaintenanceDate": "2025-06-15T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901240",
+    "make": "Nissan",
+    "model": "Rogue",
+    "year": 2023,
+    "type": "car",
+    "number": "KLM789",
+    "color": "White",
+    "rentalRate": 65,
+    "image": {
+      "imageId": "nissan_rogue_2023_white_001",
+      "imageUrl": "https://example.com/images/cars/nissan_rogue_white.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Philadelphia",
+    "subLocation": "Center City",
+    "lastMaintenanceDate": "2025-05-10T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901241",
+    "make": "Dodge",
+    "model": "Ram 1500",
+    "year": 2022,
+    "type": "truck",
+    "number": "NOP012",
+    "color": "Black",
+    "rentalRate": 95,
+    "image": {
+      "imageId": "dodge_ram1500_2022_black_001",
+      "imageUrl": "https://example.com/images/trucks/dodge_ram_black.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Phoenix",
+    "subLocation": "Scottsdale",
+    "lastMaintenanceDate": "2025-06-20T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901242",
+    "make": "Yamaha",
+    "model": "MT-07",
+    "year": 2023,
+    "type": "bike",
+    "number": "QRS345",
+    "color": "Blue",
+    "rentalRate": 70,
+    "image": {
+      "imageId": "yamaha_mt07_2023_blue_001",
+      "imageUrl": "https://example.com/images/bikes/yamaha_mt07_blue.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Nashville",
+    "subLocation": "Downtown",
+    "lastMaintenanceDate": "2025-06-25T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901243",
+    "make": "Hyundai",
+    "model": "Tucson",
+    "year": 2024,
+    "type": "car",
+    "number": "TUV678",
+    "color": "Silver",
+    "rentalRate": 70,
+    "image": {
+      "imageId": "hyundai_tucson_2024_silver_001",
+      "imageUrl": "https://example.com/images/cars/hyundai_tucson_silver.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Atlanta",
+    "subLocation": "Buckhead",
+    "lastMaintenanceDate": "2025-07-02T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901244",
+    "make": "Subaru",
+    "model": "Outback",
+    "year": 2023,
+    "type": "car",
+    "number": "WXY901",
+    "color": "Green",
+    "rentalRate": 75,
+    "image": {
+      "imageId": "subaru_outback_2023_green_001",
+      "imageUrl": "https://example.com/images/cars/subaru_outback_green.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Denver",
+    "subLocation": "Highland",
+    "lastMaintenanceDate": "2025-05-30T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901245",
+    "make": "MAN",
+    "model": "Lion's Coach",
+    "year": 2022,
+    "type": "bus",
+    "number": "ZAB234",
+    "color": "White",
+    "rentalRate": 200,
+    "image": {
+      "imageId": "man_lions_coach_2022_white_001",
+      "imageUrl": "https://example.com/images/buses/man_lions_coach_white.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Las Vegas",
+    "subLocation": "Strip",
+    "lastMaintenanceDate": "2025-06-10T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901246",
+    "make": "Lexus",
+    "model": "RX",
+    "year": 2024,
+    "type": "car",
+    "number": "CDE567",
+    "color": "Black",
+    "rentalRate": 115,
+    "image": {
+      "imageId": "lexus_rx_2024_black_001",
+      "imageUrl": "https://example.com/images/cars/lexus_rx_black.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "Washington D.C.",
+    "subLocation": "Georgetown",
+    "lastMaintenanceDate": "2025-06-28T00:00:00.000Z"
+  },
+  {
+    "_id": "66e1b2c3d4e5f6a708901247",
+    "make": "Triumph",
+    "model": "Street Triple",
+    "year": 2023,
+    "type": "bike",
+    "number": "FGH890",
+    "color": "Red",
+    "rentalRate": 75,
+    "image": {
+      "imageId": "triumph_street_triple_2023_red_001",
+      "imageUrl": "https://example.com/images/bikes/triumph_street_triple_red.jpg"
+    },
+    "availablity": true,
+    "mainLocation": "San Diego",
+    "subLocation": "Gaslamp Quarter",
+    "lastMaintenanceDate": "2025-06-05T00:00:00.000Z"
+  }
+]
