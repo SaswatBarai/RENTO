@@ -24,6 +24,6 @@ router.post("/addVehicle", authMiddleware, adminMiddleware,
 
 router.delete("/remove/:vehicleId", authMiddleware, adminMiddleware, removeVehicleController);
 router.get("/getVehicle/:vehicleId", optionalAuthMiddleware, getVehicleController);
-router.get("/getAllVehicles", getAllVehicleController);
+router.get("/getAllVehicles",getAllVehicleController);
 
 export default router;

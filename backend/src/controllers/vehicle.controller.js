@@ -23,7 +23,11 @@ export const addVehicleController = asyncHandler(async (req, res) => {
             lastMaintenanceDate,
         } = req.body;
 
-        if ([make, model, type, number, color, mainLocation, subLocation].some(val => typeof val !== 'string' || val.trim() === "")) {
+        if (
+            [make, model, type, number, color, mainLocation, subLocation].some(
+                (val) => typeof val !== "string" || val.trim() === ""
+            )
+        ) {
             throw new ApiError(400, "All string fields are required");
         }
 
@@ -33,7 +37,11 @@ export const addVehicleController = asyncHandler(async (req, res) => {
         }
 
         let imageLocalPath;
-        if (req.files && Array.isArray(req.files.vehicleImage) && req.files.vehicleImage.length > 0) {
+        if (
+            req.files &&
+            Array.isArray(req.files.vehicleImage) &&
+            req.files.vehicleImage.length > 0
+        ) {
             imageLocalPath = req.files.vehicleImage[0].path;
         } else {
             throw new ApiError(400, "Vehicle image is required");
@@ -82,11 +90,10 @@ export const addVehicleController = asyncHandler(async (req, res) => {
     }
 });
 
-
 export const removeVehicleController = asyncHandler(async (req, res) => {
     try {
         const { vehicleId } = req.params;
-        console.log(vehicleId)
+        console.log(vehicleId);
         if (!vehicleId) {
             throw new ApiError(400, "Vehicle ID is required");
         }
@@ -128,14 +135,24 @@ export const getVehicleController = asyncHandler(async (req, res) => {
         const { vehicleId } = req.params;
 
         // Validate vehicleId
-        if (!vehicleId || !new mongoose.Types.ObjectId.isValid(vehicleId)) {
-            throw new ApiError(400, "Invalid or missing Vehicle ID");
+
+
+        if (!vehicleId) {
+            throw new ApiError(400, "Missing Vehicle ID");
+        }
+        if (!mongoose.isValidObjectId(vehicleId)) {
+            throw new ApiError(400, "Invalid Vehicle ID format");
         }
 
+        // res.json({
+        //     messgae: "success",
+        // });
+        // process.exit(1);
         //Case 1: If user is authenticated
         const userId = req.user?._id;
 
-        if (userId && new mongoose.Types.ObjectId.isValid(userId)) {
+        if (userId && mongoose.isValidObjectId(userId)) {
+            console.log("Mark 1")
             const vehicleData = await Vehicle.aggregate([
                 {
                     $match: {
@@ -198,11 +215,11 @@ export const getVehicleController = asyncHandler(async (req, res) => {
 
         // Case 2: If user is NOT authenticated
         else {
+            console.log("Mark 2")
             const vehicle = await Vehicle.findById(vehicleId);
             if (!vehicle) {
                 throw new ApiError(404, "Vehicle not found");
-            };
-            
+            }
 
             return res.status(200).json({
                 success: true,
@@ -214,6 +231,7 @@ export const getVehicleController = asyncHandler(async (req, res) => {
             });
         }
     } catch (error) {
+        console.log(error.message);
         if (error instanceof ApiError) {
             return res.status(error.statusCode).json({
                 success: false,
@@ -233,18 +251,17 @@ export const getVehicleController = asyncHandler(async (req, res) => {
 export const getAllVehicleController = asyncHandler(async (req, res) => {
     try {
         const allVehicle = await Vehicle.find({
-            availablity: true // Get available vehicles
+            availablity: true, 
         });
-        
+
         if (!allVehicle || allVehicle.length === 0) {
             throw new ApiError(404, "No vehicles found");
         }
 
         return res.status(200).json({
             success: true,
-            data: new ApiResponse(200, allVehicle, "Vehicles retrieved successfully")
+            data: new ApiResponse(200, allVehicle, "Vehicles retrieved successfully"),
         });
-        
     } catch (error) {
         if (error instanceof ApiError) {
             return res.status(error.statusCode).json({
@@ -256,7 +273,7 @@ export const getAllVehicleController = asyncHandler(async (req, res) => {
             return res.status(500).json({
                 success: false,
                 message: "Internal Server Error",
-                statusCode: 500
+                statusCode: 500,
             });
         }
     }

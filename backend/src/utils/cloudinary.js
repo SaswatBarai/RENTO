@@ -19,7 +19,6 @@ export const uploadOnCloudinary = async (filePath) => {
             return null;
         }
 
-        // Check if file exists
         if (!fs.existsSync(filePath)) {
             console.log("File does not exist at path:", filePath);
             return null;
@@ -34,14 +33,12 @@ export const uploadOnCloudinary = async (filePath) => {
 
         console.log("Cloudinary upload successful:", response.public_id);
 
-        // Remove file from local storage after successful upload
         fs.unlinkSync(filePath);
         return response;
 
     } catch (error) {
         console.error("Cloudinary upload error:", error);
         
-        // Try to remove the file even if upload failed
         try {
             if (fs.existsSync(filePath)) {
                 fs.unlinkSync(filePath);
@@ -50,7 +47,7 @@ export const uploadOnCloudinary = async (filePath) => {
             console.error("Error removing file:", unlinkError);
         }
         
-        return null; // Return null instead of throwing error
+        return null; 
     }
 }
 
