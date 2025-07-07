@@ -48,7 +48,7 @@ const vehicleSchema = new Schema({
             required:true
        }
     },
-    availablity:{
+    availability:{
         type:Boolean,
         default:true
     },

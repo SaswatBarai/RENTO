@@ -13,11 +13,11 @@ const bookingSchema = new Schema({
         required:true
     },
     pickupDate:{
-        type:Date,
+        type:Date,//example: "2023-10-01T10:00:00Z"
         required:true
     },
     pickupTime:{
-        type:String,
+        type:String,//example: "10:00 AM"
         required:true
     },
     pickupLocation:{
@@ -50,8 +50,8 @@ const bookingSchema = new Schema({
     },
     paymentMethod:{
         type:String,
-        enum:["credit_card","debit_card","paypal","cash"],
-        default:"credit_card"
+        enum:["razorpay","cash"],
+        default:"cash"
     },
     transactionId:{
         type:String,

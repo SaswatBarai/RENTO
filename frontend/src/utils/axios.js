@@ -98,7 +98,7 @@ export const googleLogin = async({accessToken}) => {
         console.log("Sending Google login request with access token:", accessToken);
         const res = await axiosIntance.post(
             `/auth/google`,
-            { accessToken }, // Ensure it's an object with accessToken property
+            { accessToken },
             {
                 headers: {
                     "Content-Type": "application/json"
