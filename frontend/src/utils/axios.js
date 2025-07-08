@@ -117,4 +117,44 @@ export const googleLogin = async({accessToken}) => {
     }
 }
 
+export const getAllVehicle = async () => {
+    try {
+        const res = await axiosIntance.get(
+            "/vehicle/getAllVehicles",
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true
+            }   
+        );
+    
+        console.log(res.data);
+        return res.data;
+    } catch (error) {
+        console.error("Error fetching vehicles:", error.response?.data?.message);
+        throw error;
+        
+    }
+}
+export const getVehicleById = async (vehicleId) => {
+    try {
+        const res = await axiosIntance.get(
+            `/vehicle/getAllVehicles/${vehicleId}`,
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true
+            }
+        );
+        console.log("Vehicle data:", res.data);
+        return res.data;
+        
+    } catch (error) {
+        console.error("Error fetching vehicle by ID:", error.response?.data?.message);
+        throw error;
+    }
+}
+
 export default axiosIntance;
