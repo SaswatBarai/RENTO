@@ -1,5 +1,5 @@
 import {useMutation,useQuery} from "@tanstack/react-query"
-import {login,register,googleLogin,getAllVehicle,getVehicleById} from "./axios.js"
+import {login,register,googleLogin,getAllVehicle,getVehicleById,getLocation,setLocation} from "./axios.js"
 
 export const useLogin = ()=>{
     return useMutation({
@@ -23,7 +23,22 @@ export const useGetAllVehicle = () => {
     return useQuery({
         queryKey: ["getAllVehicle"],
         queryFn: getAllVehicle,
-        gcTime: 1000 * 60 * 5, // Cache for 5 minutes
+        gcTime: 1000 * 60 * 2, 
+    })
+}
+
+export const useSetLocation = () => {
+    return useMutation({
+        mutationFn:setLocation
+    })
+}
+
+export const UseGetLocation = () => {
+    return useQuery({
+        queryKey: ["getLocation"],
+        queryFn: getLocation,
+        gcTime: 1000 * 60 * 2, // 2 minutes 
+        refetchInterval: 1000 * 60 * 2, 
     })
 }
 
@@ -31,6 +46,6 @@ export const useGetVehicleById = (id) => {
     return useQuery({
         queryKey: ["getVehicleById", id],
         queryFn: () => getVehicleById(id),
-        gcTime: 1000 * 60 * 5, // Cache for 5 minutes
+        gcTime: 1000 * 60 * 2, 
     })
 }

@@ -38,7 +38,6 @@ function Rentals() {
           <MainContent data={data} />
           // <MainContent data={data} />
             )
-
       }
     </>
   )
@@ -120,7 +119,7 @@ const MainContent = ({data})=> {
             {
             // make , model,availability,rentalRate
               data.map((item) => (
-                <div>
+                <div key={item._id}>
                   <ProductCard
                   make={item.make}
                   model={item.model}

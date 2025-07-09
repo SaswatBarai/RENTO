@@ -23,7 +23,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import {Profile} from "../components/Profile.jsx"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Profile } from "../components/Profile.jsx"
 // import { useEffect } from "react";
 
 
@@ -55,7 +62,7 @@ const Navbar1 = () => {
   // console.log('isAuth:', isAuth, 'user:', user, 'profileUrl:', profileUrl)
 
   return (
-    <section className={`py-4 bg-gradient-to-r from-[#0a1627] to-[#050e1a] border-b border-[#334155] shadow-lg backdrop-blur-sm sticky top-0 z-50 transition-all duration-300 ${hide ? "hidden" : "block"}`}>
+    <section className={`py-4 relative bg-gradient-to-r from-[#0a1627] to-[#050e1a] border-b border-[#334155] shadow-lg backdrop-blur-sm sticky top-0 z-50 transition-all duration-300 ${hide ? "hidden" : "block"}`}>
       <div className="container px-4 max-w-7xl mx-auto">
         {/* Desktop Menu */}
         <nav className="hidden justify-between lg:flex items-center">
@@ -137,7 +144,7 @@ const Navbar1 = () => {
               <div className="flex flex-col gap-8 mt-8">
                 <div className="flex flex-col gap-2">
                   {menu.map((item, index) => (
-                    <a 
+                    <a
                       key={item.title}
                       href={item.url}
                       className="group flex items-center gap-3 p-4 rounded-xl text-lg font-semibold text-white hover:bg-[#101e36]/70 hover:text-blue-300 transition-all duration-300 hover:translate-x-2"
@@ -147,6 +154,19 @@ const Navbar1 = () => {
                       {item.title}
                     </a>
                   ))}
+
+                  <div>
+                    <Select defaultValue="mumbai" className="w-full">
+                      <SelectTrigger className="h-10 w-full bg-[#16213a] border-blue-900/30 text-gray-300">
+                        <SelectValue placeholder="Select city or airport" />
+                      </SelectTrigger>
+                      <SelectContent side="bottom" className="bg-[#16213a] text-gray-300 border-blue-900/30">
+                        <SelectItem value="bhubaneswar">Bhubaneswar, India</SelectItem>
+                        <SelectItem value="delhi">Delhi, India</SelectItem>
+                        <SelectItem value="mumbai">Mumbai, India</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
                 <div className="flex flex-col gap-4 pt-4 border-t border-blue-900/50">
                   {isAuth && profileUrl ? (

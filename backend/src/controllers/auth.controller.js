@@ -93,6 +93,11 @@ export const loginController = asyncHandler(async (req, res) => {
       "-password -refreshToken"
     );
     console.log(user);
+    let isLocationSet = true;
+    if (!user.location || user.location.trim() === "") {
+      isLocationSet = false;
+    }
+
     return res
       .cookie("refreshToken", refreshToken, {
         httpOnly: true,
@@ -105,7 +110,7 @@ export const loginController = asyncHandler(async (req, res) => {
       .status(200)
       .json({
         success: true,
-        data: new ApiResponse(200, user, "User logged in successfully"),
+        data: new ApiResponse(200, {...user.toObject(),isLocationSet}, "User logged in successfully"),
         accessToken,
       });
   } catch (error) {
@@ -178,6 +183,11 @@ export const googleController = asyncHandler(async (req, res) => {
     const { accessToken: newAccessToken, refreshToken } = await generateTokens(
       NewUser._id
     );
+
+     let isLocationSet = true;
+    if (!user.location || user.location.trim() === "") {
+      isLocationSet = false;
+    }
     return res
       .cookie("refreshToken", refreshToken, {
         httpOnly: true,
@@ -192,7 +202,7 @@ export const googleController = asyncHandler(async (req, res) => {
         success: true,
         data: new ApiResponse(
           200,
-          NewUser,
+          {...NewUser.toObject(),isLocationSet},
           "User logged in successfully with Google"
         ),
         accessToken: newAccessToken,
@@ -294,3 +304,64 @@ export const getNewAccessToken = asyncHandler(async (req, res) => {
     });
   }
 });
+
+export const setLocationController = asyncHandler(async(req,res) => {
+  try {
+    const {location} = req.body;
+    if (!location) {
+      throw new ApiError(400, "Location is required");
+    }
+
+    const userId = req.user._id;
+    const user = await User.findByIdAndUpdate(userId,{
+      location
+    })
+    await user.save({ validateBeforeSave: false });
+    return res.status(200).json({
+      success: true,
+      data: new ApiResponse(200, user, "Location updated successfully"),
+    });
+    
+  } catch (error) {
+    console.log(error.message)
+    if (error instanceof ApiError) {
+      return res.status(error.statusCode).json({
+        success: false,
+        message: error.message,
+        statusCode: error.statusCode,
+      });
+    }
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      statusCode: 500,
+    });
+  }
+})
+
+export const getLocationController = asyncHandler(async(req,res) => {
+  try {
+    const userId = req.user._id;
+    const user = await User.findById(userId);
+    if (!user) {
+      throw new ApiError(404, "User not found");
+    }
+    return res.status(200).json({
+      success: true,
+      data: new ApiResponse(200, user.location, "Location fetched successfully"),
+    });
+  } catch (error) {
+    if (error instanceof ApiError) {
+      return res.status(error.statusCode).json({
+        success: false,
+        message: error.message,
+        statusCode: error.statusCode,
+      });
+    }
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      statusCode: 500,
+    });
+  }
+})

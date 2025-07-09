@@ -6,7 +6,8 @@ const initialState = {
     user: null,
     accessToken: null,
     refreshToken: null,
-    profilePic : null
+    profilePic : null,
+    isVisibleLocationForm:false, // State to control visibility of location form
 }
 
 
@@ -22,6 +23,7 @@ const authSlice = createSlice({
             state.accessToken = accessToken;
             state.refreshToken = refreshToken;
             state.profilePic = profilePic || null;
+            // state.isVisibleLocationForm = isVisibleLocationForm || false; 
         },
         logout: (state) => {
             state.isAuthenticated = false;

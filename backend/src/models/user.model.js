@@ -9,6 +9,12 @@ const userSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    location:{
+      type:String,
+      enum:["bhubanewar","delhi","mumbai"],
+      default:"bhubanewar",
+      required: true,
+    },
     email: {
       type: String,
       required: true,

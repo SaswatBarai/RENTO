@@ -71,10 +71,28 @@ export function LoginForm() {
               user: data.data.data,
               accessToken: data.accessToken,
               refreshToken: cookieStorage.getItem("refreshToken"),
-              profilePic: data.data.data.profilePicture
+              profilePic: data.data.data.profilePicture,
+              // isVisibleLocationForm:!data.data.data.isLocationSet
             }
           ))
+          localStorage.setItem("user", JSON.stringify(data.data.data));
+          localStorage.setItem("refreshToken", cookieStorage.getItem("refreshToken"));
           setLoading(false)
+          let isVisibleLocationForm = !data.data.data.isLocationSet;
+          if (isVisibleLocationForm) {
+            navigate("/first/Setlocation")
+            toast.success('Set Your Location', {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
+          }
           navigate("/home")
 
           toast.success('Login Successfull', {
@@ -120,18 +138,35 @@ export function LoginForm() {
         {
           onSuccess: (data) => {
             console.log("Google login data:", data);
-            console.log("USer  detail from form",data.data.data)
+            console.log("USer  detail from form", data.data.data)
+            console.log("isLocationSet", data.data.data.isLocationSet)
             dispatch(
               login({
                 user: data.data.data,
-                accessToken:data.accessToken,
+                accessToken: data.accessToken,
                 refreshToken: cookieStorage.getItem("refreshToken"),
                 profilePic: data.data.data.profilePicture,
+                // isVisibleLocationForm:!data.data.data.isLocationSet
               })
             );
             localStorage.setItem("user", JSON.stringify(data.data.data));
-            
+
             setLoading(false);
+            let isVisibleLocationForm = !data.data.data.isLocationSet;
+            if (isVisibleLocationForm) {
+              navigate("/first/Setlocation")
+              toast.success('Set Your Location', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
+            }
             navigate("/home");
             dispatch(showNav());
 

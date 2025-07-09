@@ -157,4 +157,44 @@ export const getVehicleById = async (vehicleId) => {
     }
 }
 
+export const setLocation = async (location) => {
+    console.log(location)
+    try {
+        const res = await axiosIntance.patch(
+            "/auth/setLocation",
+            { location },
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true
+            }
+        );
+        console.log("Location set successfully:", res.data);
+        return res.data;
+    } catch (error) {
+        console.error("Error setting location:", error.response?.data?.message);
+        throw error;
+    }
+}
+
+export const getLocation = async () => {
+    try {
+        const res = await axiosIntance.get(
+            "/auth/getLocation",
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true
+            }
+        );
+        console.log("Location fetched successfully:", res.data);
+        return res.data;
+    } catch (error) {
+        console.error("Error fetching location:", error.response?.data?.message);
+        throw error;
+    }
+}
+
 export default axiosIntance;

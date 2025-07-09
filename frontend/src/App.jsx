@@ -5,6 +5,7 @@ import Home from "./pages/Home.jsx"
 import Rentals from "./pages/Rentals.jsx"
 import Contact from "./pages/Contact.jsx"
 import Help from "./pages/Help.jsx"
+import Location from './pages/Location.jsx';
 import { LoginForm } from './components/LoginForm.jsx';
 import { RegisterForm } from './components/RegisterForm.jsx';
 import {GoogleWrapper} from "./components/wrapper/GoogleWrapper.jsx"
@@ -22,6 +23,7 @@ function App() {
         <Route path='/rentals' element={<Rentals />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/help' element={<Help />} />
+        <Route path='/first/Setlocation' element={<Location />} />
         <Route path="/login" element={
           <GoogleWrapper>
             <LoginForm />
