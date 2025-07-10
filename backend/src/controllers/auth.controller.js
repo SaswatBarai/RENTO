@@ -318,9 +318,11 @@ export const setLocationController = asyncHandler(async(req,res) => {
       location
     })
     await user.save({ validateBeforeSave: false });
+    const sendUser = await User.findById(user._id).select(
+      "-password -refreshToken");
     return res.status(200).json({
       success: true,
-      data: new ApiResponse(200, user, "Location updated successfully"),
+      data: new ApiResponse(200, sendUser, "Location updated successfully"),
     });
     
   } catch (error) {

@@ -11,6 +11,7 @@ import { toast, Bounce } from "react-toastify";
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { showNav } from "../state/navHideSlice.js"
+import { SetSelectedCity } from '../utils/setselectedcity.localStorage.js';
 
 function Location() {
   const [location, setLocation] = useState("");
@@ -26,6 +27,10 @@ function Location() {
       location,
       {
         onSuccess: (data) => {
+          console.log(data)
+          const location = data.data.location;
+          console.log("location",location)
+          localStorage.setItem("selectedCity", location);
           if (data.success) {
             toast.info(`${data.data.message}`, {
               position: "top-center",
@@ -40,7 +45,7 @@ function Location() {
             });
           }
           setTimeout(()=> {
-            dispatch(showNav()); // Dispatch showNav action to show navigation
+            dispatch(showNav());
             navigate("/home");
             toast.success(`Login SuccessFully`, {
               position: "top-center",

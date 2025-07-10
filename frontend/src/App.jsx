@@ -11,9 +11,11 @@ import { RegisterForm } from './components/RegisterForm.jsx';
 import {GoogleWrapper} from "./components/wrapper/GoogleWrapper.jsx"
 import {AuthCheck} from "./utils/checkAuth.js"
 import { ErrorSection } from './pages/Error.jsx';
+import {SetSelectedCity} from "./utils/setselectedcity.localStorage.js"
 
 function App() {
   AuthCheck()
+  SetSelectedCity()
 
   return (
     <Routes>

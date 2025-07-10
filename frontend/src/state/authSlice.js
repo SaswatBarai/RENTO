@@ -7,7 +7,8 @@ const initialState = {
     accessToken: null,
     refreshToken: null,
     profilePic : null,
-    isVisibleLocationForm:false, // State to control visibility of location form
+    isVisibleLocationForm:false, 
+    location:null
 }
 
 
@@ -16,13 +17,14 @@ const authSlice = createSlice({
     initialState,
     reducers:{
         login: (state , action) => {
-            const {user,accessToken,refreshToken,profilePic} = action.payload;
+            const {user,accessToken,refreshToken,profilePic,location} = action.payload;
             console.log('user:', user, 'accessToken:', accessToken, 'refreshToken:', refreshToken, 'profilePic:', profilePic);
             state.isAuthenticated = true;
             state.user = user;
             state.accessToken = accessToken;
             state.refreshToken = refreshToken;
             state.profilePic = profilePic || null;
+            state.location = location || null;
             // state.isVisibleLocationForm = isVisibleLocationForm || false; 
         },
         logout: (state) => {

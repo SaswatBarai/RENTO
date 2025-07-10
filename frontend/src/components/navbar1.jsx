@@ -1,12 +1,6 @@
 import React from "react";
-import { Menu } from "lucide-react";
-import { useSelector } from "react-redux"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Menu, MapPin } from "lucide-react";
+import { useSelector, useDispatch } from "react-redux"
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -29,9 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Profile } from "../components/Profile.jsx"
-// import { useEffect } from "react";
-
-
+import { setSelectedCity } from "../state/locationSlice.js"
 
 const menu = [
   { title: "Home", url: "/" },
@@ -44,20 +36,32 @@ const auth = {
   login: { title: "Login", url: "/login" },
   signup: { title: "Sign up", url: "/register" },
 };
-
 const logo = {
   url: "/",
   title: "Rento",
 };
 
+// Available cities/locations
+const cities = [
+  { value: "bhubaneswar", label: "Bhubaneswar, India" },
+  { value: "delhi", label: "Delhi, India" },
+  { value: "mumbai", label: "Mumbai, India" },
+];
+
 const Navbar1 = () => {
+  const dispatch = useDispatch();
   const hide = useSelector(state => state.navHide.isHide);
   const isAuth = useSelector(state => state.auth.isAuthenticated);
-  console.log(isAuth)
   const user = useSelector(state => state.auth.user);
   const profileUrl = user?.profilePicture || null;
 
-  // console.log('isAuth:', isAuth, 'user:', user, 'profileUrl:', profileUrl)
+  const selectedCity = useSelector(state => state.location.selectedCity);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    // For example, you might want to dispatch an action to set the selected city
+  }
+
 
   return (
     <section className={`py-4 relative bg-gradient-to-r from-[#0a1627] to-[#050e1a] border-b border-[#334155] shadow-lg backdrop-blur-sm sticky top-0 z-50 transition-all duration-300 ${hide ? "hidden" : "block"}`}>
@@ -89,28 +93,64 @@ const Navbar1 = () => {
               </NavigationMenuList>
             </NavigationMenu>
           </div>
+
           <div className="flex gap-3 items-center">
-            {
-              isAuth && profileUrl ? (
-                <div className="flex items-center gap-3">
-                  <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-[#101e36] rounded-full border border-blue-500/30">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-white">Online</span>
-                  </div>
-                  <Profile profileUrl={`${profileUrl}`} />
+            {/* City Selector - Only show for authenticated users on desktop */}
+            {isAuth && (
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-blue-400" />
+
+
+                <form onSubmit={handleSubmit}>
+                  <Select
+                    
+                    defaultValue={selectedCity || ""}
+                    onValueChange={async value => dispatch(
+                      setSelectedCity(value),
+                      await localStorage.setItem("selectedCity", value)
+                    )}
+                    className="w-full"
+                  >
+                    <SelectTrigger className="h-10 w-48 bg-[#16213a] border-2 border-blue-400/50 text-gray-300 hover:bg-[#1a2441] hover:border-blue-400 transition-all duration-300 rounded-xl font-medium shadow-md hover:scale-105">
+                      <SelectValue placeholder="Select city" />
+                    </SelectTrigger>
+                    <SelectContent side="bottom" className="bg-[#16213a] text-gray-300 border-blue-900/30 min-w-[200px]">
+                      {cities.map((city) => (
+                        <SelectItem
+                          key={city.value}
+                          value={city.value}
+                          className="hover:bg-[#101e36] hover:text-blue-300 cursor-pointer transition-colors duration-200"
+                        >
+                          {city.label}
+                        </SelectItem>
+                      ))}
+                      <button className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-blue-700 hover:scale-105 transition-transform duration-300 w-full ">
+                        Submit
+                      </button>
+                    </SelectContent>
+                  </Select>
+                </form>
+              </div>
+            )}
+
+            {isAuth && profileUrl ? (
+              <div className="flex items-center gap-3">
+                <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-[#101e36] rounded-full border border-blue-500/30">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-medium text-white">Online</span>
                 </div>
-              ) :
-                (
-                  <div className="flex gap-3">
-                    <Button asChild variant="outline" size="sm" className="border-2 border-blue-400 text-white hover:bg-blue-500 hover:text-white hover:scale-105 transition-all duration-300 rounded-full px-6 font-semibold shadow-md">
-                      <a href={auth.login.url}>{auth.login.title}</a>
-                    </Button>
-                    <Button asChild size="sm" className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white hover:scale-105 transition-all duration-300 rounded-full px-6 font-semibold shadow-lg">
-                      <a href={auth.signup.url}>{auth.signup.title}</a>
-                    </Button>
-                  </div>
-                )
-            }
+                <Profile profileUrl={`${profileUrl}`} />
+              </div>
+            ) : (
+              <div className="flex gap-3">
+                <Button asChild variant="outline" size="sm" className="border-2 border-blue-400 text-white hover:bg-blue-500 hover:text-white hover:scale-105 transition-all duration-300 rounded-full px-6 font-semibold shadow-md">
+                  <a href={auth.login.url}>{auth.login.title}</a>
+                </Button>
+                <Button asChild size="sm" className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white hover:scale-105 transition-all duration-300 rounded-full px-6 font-semibold shadow-lg">
+                  <a href={auth.signup.url}>{auth.signup.title}</a>
+                </Button>
+              </div>
+            )}
           </div>
         </nav>
 
@@ -153,19 +193,36 @@ const Navbar1 = () => {
                     </a>
                   ))}
 
-                  <div>
-                    <Select defaultValue="mumbai" className="w-full">
-                      <SelectTrigger className="h-10 w-full bg-[#16213a] border-blue-900/30 text-gray-300">
+                  {/* City Selector in Mobile - Always visible, behavior depends on auth status */}
+                  <div className="mt-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <MapPin className="w-4 h-4 text-blue-400" />
+                      <span className="text-sm font-medium text-blue-300">
+                        {isAuth ? "Your Location" : "Select Location"}
+                      </span>
+                    </div>
+                    <Select
+                      className="w-full"
+
+                    >
+                      <SelectTrigger className="h-12 w-full bg-[#16213a] border-blue-900/30 text-gray-300 hover:bg-[#1a2441] transition-colors duration-200">
                         <SelectValue placeholder="Select city or airport" />
                       </SelectTrigger>
                       <SelectContent side="bottom" className="bg-[#16213a] text-gray-300 border-blue-900/30">
-                        <SelectItem value="bhubaneswar">Bhubaneswar, India</SelectItem>
-                        <SelectItem value="delhi">Delhi, India</SelectItem>
-                        <SelectItem value="mumbai">Mumbai, India</SelectItem>
+                        {cities.map((city) => (
+                          <SelectItem
+                            key={city.value}
+                            value={city.value}
+                            className="hover:bg-[#101e36] hover:text-blue-300 cursor-pointer transition-colors duration-200"
+                          >
+                            {city.label}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
+
                 <div className="flex flex-col gap-4 pt-4 border-t border-blue-900/50">
                   {isAuth && profileUrl ? (
                     <div className="flex items-center gap-3 p-4 bg-[#101e36] rounded-xl border border-blue-500/30">

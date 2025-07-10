@@ -19,7 +19,7 @@ const vehicleSchema = new Schema({
     type:{
         type:String,
         required:true,
-        enum:["car","bike","truck","bus"],
+        enum:["Type1", "Type2", "Type3"],
         trim:true
     },
     number:{

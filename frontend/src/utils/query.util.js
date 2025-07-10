@@ -37,7 +37,7 @@ export const UseGetLocation = () => {
     return useQuery({
         queryKey: ["getLocation"],
         queryFn: getLocation,
-        gcTime: 1000 * 60 * 2, // 2 minutes 
+        gcTime: 1000 * 60 * 2,
         refetchInterval: 1000 * 60 * 2, 
     })
 }

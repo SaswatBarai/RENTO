@@ -134,21 +134,12 @@ export const getVehicleController = asyncHandler(async (req, res) => {
     try {
         const { vehicleId } = req.params;
 
-        // Validate vehicleId
-
-
         if (!vehicleId) {
             throw new ApiError(400, "Missing Vehicle ID");
         }
         if (!mongoose.isValidObjectId(vehicleId)) {
             throw new ApiError(400, "Invalid Vehicle ID format");
         }
-
-        // res.json({
-        //     messgae: "success",
-        // });
-        // process.exit(1);
-        //Case 1: If user is authenticated
         const userId = req.user?._id;
 
         if (userId && mongoose.isValidObjectId(userId)) {
@@ -251,7 +242,7 @@ export const getVehicleController = asyncHandler(async (req, res) => {
 export const getAllVehicleController = asyncHandler(async (req, res) => {
     try {
         const allVehicle = await Vehicle.find({
-            availablity: true, 
+            availablity: true,
         });
 
         if (!allVehicle || allVehicle.length === 0) {
@@ -262,6 +253,8 @@ export const getAllVehicleController = asyncHandler(async (req, res) => {
             success: true,
             data: new ApiResponse(200, allVehicle, "Vehicles retrieved successfully"),
         });
+
+
     } catch (error) {
         if (error instanceof ApiError) {
             return res.status(error.statusCode).json({
@@ -278,3 +271,44 @@ export const getAllVehicleController = asyncHandler(async (req, res) => {
         }
     }
 });
+
+export const getVehicleByMainLocation = asyncHandler(
+    async(req,res) => {
+        try {
+            const { mainLocation } = req.params;
+            if (!mainLocation) {
+                throw new ApiError(400, "Main location is required");
+            }
+            const vehicle =await Vehicle.find({
+                mainLocation: mainLocation,
+                availability: true,
+            });
+
+            if (!vehicle || vehicle.length === 0) {
+                throw new ApiError(404, "No vehicles found at this location");
+            }
+
+            return res.status(200).json({
+                success: true,
+                data: new ApiResponse(200, vehicle, "Vehicles retrieved successfully"),
+            });
+        } catch (error) {
+            if(error instanceof ApiError) {
+                return res.status(error.statusCode).json({
+                    success: false,
+                    message: error.message,
+                    statusCode: error.statusCode,
+                });
+            }
+            else{
+                return res.status(500).json({
+                    success: false,
+                    message: "Internal Server Error",
+                    statusCode: 500,
+                });
+            }
+        }
+    }
+)
+
+

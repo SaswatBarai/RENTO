@@ -73,6 +73,7 @@ export function LoginForm() {
               accessToken: data.accessToken,
               refreshToken: cookieStorage.getItem("refreshToken"),
               profilePic: data.data.data.profilePicture,
+              
             }
           ))
           localStorage.setItem("user", JSON.stringify(data.data.data));
@@ -153,7 +154,7 @@ export function LoginForm() {
               })
             );
             localStorage.setItem("user", JSON.stringify(data.data.data));
-
+            localStorage.setItem("selectedCity", data.data.data.location);
             setLoading(false);
             let visibleLocationForm = data.data.data.visibleLocationForm;
             if (visibleLocationForm) {
