@@ -11,9 +11,8 @@ const userSchema = new mongoose.Schema(
     },
     location:{
       type:String,
-      enum:["bhubanewar","delhi","mumbai"],
-      default:"bhubanewar",
-      required: true,
+      enum:["bhubanewar","delhi","mumbai",""],
+      default:"",
     },
     email: {
       type: String,

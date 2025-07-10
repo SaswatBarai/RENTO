@@ -76,7 +76,7 @@ export const loginController = asyncHandler(async (req, res) => {
     if (!existingUser) {
       throw new ApiError(400, "Invalid Credentails1");
     }
-    console.log("HELLLLLLL");
+    // console.log("HELLLLLLL");
     const isMatch = await existingUser.isPasswordMatch(password);
 
     if (!isMatch) {
@@ -145,7 +145,6 @@ export const googleController = asyncHandler(async (req, res) => {
       );
     }
     
-    // Validate the access token format
     if (typeof accessToken !== 'string' || accessToken.length < 10) {
       throw new ApiError(400, "Invalid access token format");
     }
@@ -167,7 +166,7 @@ export const googleController = asyncHandler(async (req, res) => {
           length: 12,
           numbers: true,
           symbols: true,
-        }),
+        }), 
         profilePicture: picture || "",
       });
       await newUser.save();
@@ -183,10 +182,11 @@ export const googleController = asyncHandler(async (req, res) => {
     const { accessToken: newAccessToken, refreshToken } = await generateTokens(
       NewUser._id
     );
-
-     let isLocationSet = true;
-    if (!user.location || user.location.trim() === "") {
-      isLocationSet = false;
+    
+    console.log("NewUser location value:", NewUser.location);
+    let visibleLocationForm = true; 
+    if(NewUser.location && NewUser.location.trim() !== "") {
+      visibleLocationForm = false;
     }
     return res
       .cookie("refreshToken", refreshToken, {
@@ -202,7 +202,7 @@ export const googleController = asyncHandler(async (req, res) => {
         success: true,
         data: new ApiResponse(
           200,
-          {...NewUser.toObject(),isLocationSet},
+          {...NewUser.toObject(),visibleLocationForm},
           "User logged in successfully with Google"
         ),
         accessToken: newAccessToken,
