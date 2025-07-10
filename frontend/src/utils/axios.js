@@ -197,4 +197,24 @@ export const getLocation = async () => {
     }
 }
 
+export const getVehicleByLocation = async(selectedLocation) => {
+    try {
+        console.log(selectedLocation)
+        const res = await axiosIntance.get(
+            `/vehicle/getVehicleByMainLocation/${selectedLocation}`,
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true
+            }
+        )
+        console.log("Vehicles by location:", res.data);
+        return res.data;
+    } catch (error) {
+        console.error("Error fetching vehicles by location:", error.response?.data?.message);
+        throw error;
+    }
+}
+
 export default axiosIntance;

@@ -277,12 +277,12 @@ export const getVehicleByMainLocation = asyncHandler(
     async(req,res) => {
         try {
             const { mainLocation } = req.params;
-            if (!mainLocation) {
-                throw new ApiError(400, "Main location is required");
-            }
+            
             const vehicle =await Vehicle.find({
-                mainLocation: mainLocation,
-                availability: true,
+                $and:[
+                    { mainLocation: { $regex: new RegExp(mainLocation, "i") } },
+                    { availability: true }
+                ]
             });
 
             if (!vehicle || vehicle.length === 0) {
@@ -302,6 +302,7 @@ export const getVehicleByMainLocation = asyncHandler(
                 });
             }
             else{
+                console.log(error.message);
                 return res.status(500).json({
                     success: false,
                     message: "Internal Server Error",

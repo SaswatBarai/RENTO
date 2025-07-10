@@ -1,5 +1,5 @@
 import {useMutation,useQuery} from "@tanstack/react-query"
-import {login,register,googleLogin,getAllVehicle,getVehicleById,getLocation,setLocation} from "./axios.js"
+import {login,register,googleLogin,getAllVehicle,getVehicleById,getLocation,setLocation,getVehicleByLocation} from "./axios.js"
 
 export const useLogin = ()=>{
     return useMutation({
@@ -47,5 +47,13 @@ export const useGetVehicleById = (id) => {
         queryKey: ["getVehicleById", id],
         queryFn: () => getVehicleById(id),
         gcTime: 1000 * 60 * 2, 
+    })
+}
+
+export const useGetVehicleByLocation = (selectedLocation) => {
+    return useQuery({
+        queryKey: ["getVehicleByLocation", selectedLocation],
+        queryFn: () => getVehicleByLocation(selectedLocation),
+        gcTime: 1000 * 60 * 2,
     })
 }

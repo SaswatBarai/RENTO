@@ -15,15 +15,31 @@ import { Card, CardContent } from "@/components/ui/card";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {MapPin, Calendar, Clock } from "lucide-react";
-import {useGetAllVehicle} from "../utils/query.util.js"
+// import {useGetAllVehicle} from "../utils/query.util.js"
 import {Spinner} from "../components/ui/Spinner.jsx"
-
+// import { useSelector } from 'react-redux';
+import {useFetchVehicles} from "../utils/fetchRentals.js"
 
 
 function Rentals() {
   showNav();
-  
-  const { data:fetchData, isLoading} = useGetAllVehicle();
+
+    const { data:fetchData, isLoading, error, isError } = useFetchVehicles();
+    if(isLoading) return(
+      <>
+      <div className='flex items-center justify-center min-h-screen'>
+        <Spinner />
+      </div>
+      </>
+    )
+    if (isError) {
+      return (
+        <div className='flex items-center justify-center min-h-screen'>
+          <p className='text-red-500'>Error: {error.message}</p>
+
+        </div>
+      )
+    }
   let data = fetchData?.data?.data
   console.log("obj 1",fetchData?.data?.data)
   return (
@@ -42,6 +58,8 @@ function Rentals() {
     </>
   )
 }
+
+
 
 const MainContent = ({data})=> {
   return (<>
@@ -124,7 +142,7 @@ const MainContent = ({data})=> {
                   make={item.make}
                   model={item.model}
                   rentalRate={item.rentalRate}
-                  availablity={item.availablity}
+                  availablity={item.availability}
                   imageUrl={item.image.imageUrl}
                 />
                 </div>

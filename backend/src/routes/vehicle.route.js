@@ -5,7 +5,8 @@ import {
     addVehicleController,
     removeVehicleController,
     getVehicleController,
-    getAllVehicleController
+    getAllVehicleController,
+    getVehicleByMainLocation
 } from "../controllers/vehicle.controller.js"
 
 
@@ -25,5 +26,6 @@ router.post("/addVehicle", authMiddleware, adminMiddleware,
 router.delete("/remove/:vehicleId", authMiddleware, adminMiddleware, removeVehicleController);
 router.get("/getVehicle/:vehicleId", optionalAuthMiddleware, getVehicleController);
 router.get("/getAllVehicles",getAllVehicleController);
+router.get("/getVehicleByMainLocation/:mainLocation", getVehicleByMainLocation);
 
 export default router;

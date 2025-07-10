@@ -25,7 +25,6 @@ import {
 import { Profile } from "../components/Profile.jsx";
 import { setSelectedCity } from "../state/locationSlice.js";
 import {SetSelectedCity} from "../utils/setselectedcity.localStorage.js";
-// import { updateUserLocation } from "../utils/updateUserLocation.js";
 
 const menu = [
   { title: "Home", url: "/" },
