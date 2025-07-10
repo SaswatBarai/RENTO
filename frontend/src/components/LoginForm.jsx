@@ -72,16 +72,15 @@ export function LoginForm() {
               accessToken: data.accessToken,
               refreshToken: cookieStorage.getItem("refreshToken"),
               profilePic: data.data.data.profilePicture,
-              // isVisibleLocationForm:!data.data.data.isLocationSet
             }
           ))
           localStorage.setItem("user", JSON.stringify(data.data.data));
           localStorage.setItem("refreshToken", cookieStorage.getItem("refreshToken"));
           setLoading(false)
-          let isVisibleLocationForm = !data.data.data.isLocationSet;
-          if (isVisibleLocationForm) {
+          let visibleLocationForm = data.data.data.visibleLocationForm;
+          if (visibleLocationForm) {
             navigate("/first/Setlocation")
-            toast.success('Set Your Location', {
+            toast.info('Set Your Location', {
               position: "top-center",
               autoClose: 5000,
               hideProgressBar: false,
@@ -139,7 +138,7 @@ export function LoginForm() {
           onSuccess: (data) => {
             console.log("Google login data:", data);
             console.log("USer  detail from form", data.data.data)
-            console.log("isLocationSet", data.data.data.isLocationSet)
+            console.log("Visible", data.data.data.visibleLocationForm)
             dispatch(
               login({
                 user: data.data.data,
@@ -152,8 +151,9 @@ export function LoginForm() {
             localStorage.setItem("user", JSON.stringify(data.data.data));
 
             setLoading(false);
-            let isVisibleLocationForm = !data.data.data.isLocationSet;
-            if (isVisibleLocationForm) {
+            let visibleLocationForm = data.data.data.visibleLocationForm;
+            if (visibleLocationForm) {
+              console.log("hello",visibleLocationForm)
               navigate("/first/Setlocation")
               toast.success('Set Your Location', {
                 position: "top-center",
@@ -166,6 +166,7 @@ export function LoginForm() {
                 theme: "light",
                 transition: Bounce,
               });
+              return;
             }
             navigate("/home");
             dispatch(showNav());

@@ -93,9 +93,10 @@ export const loginController = asyncHandler(async (req, res) => {
       "-password -refreshToken"
     );
     console.log(user);
-    let isLocationSet = true;
-    if (!user.location || user.location.trim() === "") {
-      isLocationSet = false;
+
+    let visibleLocationForm = true;
+    if(user.location || user.location.trim() !== ''){
+      visibleLocationForm = false;
     }
 
     return res
@@ -110,7 +111,7 @@ export const loginController = asyncHandler(async (req, res) => {
       .status(200)
       .json({
         success: true,
-        data: new ApiResponse(200, {...user.toObject(),isLocationSet}, "User logged in successfully"),
+        data: new ApiResponse(200, {...user.toObject(),visibleLocationForm}, "User logged in successfully"),
         accessToken,
       });
   } catch (error) {

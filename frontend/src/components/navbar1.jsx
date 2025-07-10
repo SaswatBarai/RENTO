@@ -1,8 +1,6 @@
 import React from "react";
 import { Menu } from "lucide-react";
 import { useSelector } from "react-redux"
-
-
 import {
   Accordion,
   AccordionContent,
