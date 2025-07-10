@@ -29,6 +29,7 @@ export function LoginForm() {
 
 
 
+
   useEffect(() => {
     dispatch(hideNav());
   }, [dispatch])
@@ -78,6 +79,7 @@ export function LoginForm() {
           localStorage.setItem("refreshToken", cookieStorage.getItem("refreshToken"));
           setLoading(false)
           let visibleLocationForm = data.data.data.visibleLocationForm;
+          console.log("From vis",visibleLocationForm)
           if (visibleLocationForm) {
             navigate("/first/Setlocation")
             toast.info('Set Your Location', {
@@ -91,7 +93,9 @@ export function LoginForm() {
               theme: "light",
               transition: Bounce,
             });
+            return;
           }
+        
           navigate("/home")
 
           toast.success('Login Successfull', {

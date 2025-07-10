@@ -9,12 +9,15 @@ import {
 import { useSetLocation } from "../utils/query.util.js"
 import { toast, Bounce } from "react-toastify";
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { showNav } from "../state/navHideSlice.js"
 
 function Location() {
   const [location, setLocation] = useState("");
 
   const setLocationMutation = useSetLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,18 +40,19 @@ function Location() {
             });
           }
           setTimeout(()=> {
-            navigate("/home")
-          toast.success(`Login SuccessFully`, {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-          });
+            dispatch(showNav()); // Dispatch showNav action to show navigation
+            navigate("/home");
+            toast.success(`Login SuccessFully`, {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
           },2005)
           
         },
