@@ -1,8 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit"
+const getInitialCity = () => {
+        return localStorage.getItem("selectedCity") || "";
+};
 
 const initialState = {
-    selectedCity:"",
-    fetchLocation:""
+    selectedCity: getInitialCity(),
+    fetchLocation: ""
 };
 
 const LocationSlice = createSlice({

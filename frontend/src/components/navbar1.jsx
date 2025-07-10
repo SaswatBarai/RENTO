@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, MapPin } from "lucide-react";
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -22,8 +22,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Profile } from "../components/Profile.jsx"
-import { setSelectedCity } from "../state/locationSlice.js"
+import { Profile } from "../components/Profile.jsx";
+import { setSelectedCity } from "../state/locationSlice.js";
+import {SetSelectedCity} from "../utils/setselectedcity.localStorage.js";
+// import { updateUserLocation } from "../utils/updateUserLocation.js";
 
 const menu = [
   { title: "Home", url: "/" },
@@ -41,7 +43,6 @@ const logo = {
   title: "Rento",
 };
 
-// Available cities/locations
 const cities = [
   { value: "bhubaneswar", label: "Bhubaneswar, India" },
   { value: "delhi", label: "Delhi, India" },
@@ -50,21 +51,32 @@ const cities = [
 
 const Navbar1 = () => {
   const dispatch = useDispatch();
-  const hide = useSelector(state => state.navHide.isHide);
-  const isAuth = useSelector(state => state.auth.isAuthenticated);
-  const user = useSelector(state => state.auth.user);
+  const hide = useSelector((state) => state.navHide.isHide);
+  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const user = useSelector((state) => state.auth.user);
+  const userLocation = useSelector((state) => state.auth.location);
   const profileUrl = user?.profilePicture || null;
+  const selectedCity = useSelector((state) => state.location.selectedCity);
 
-  const selectedCity = useSelector(state => state.location.selectedCity);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    // For example, you might want to dispatch an action to set the selected city
-  }
+  SetSelectedCity();
 
+  const handleCityChange = async (value) => {
+    dispatch(setSelectedCity(value)); 
+    localStorage.setItem("selectedCity", value); 
+    
+    // If user is authenticated, also update the user's location on the backend
+    if (isAuth) {
+      //
+    }
+  };
+
+  const displayCity = selectedCity || userLocation || "";
 
   return (
-    <section className={`py-4 relative bg-gradient-to-r from-[#0a1627] to-[#050e1a] border-b border-[#334155] shadow-lg backdrop-blur-sm sticky top-0 z-50 transition-all duration-300 ${hide ? "hidden" : "block"}`}>
+    <section
+      className={`py-4 bg-gradient-to-r from-[#0a1627] to-[#050e1a] border-b border-[#334155] shadow-lg backdrop-blur-sm sticky top-0 z-50 transition-all duration-300 ${hide ? "hidden" : "block"
+        }`}
+    >
       <div className="container px-4 max-w-7xl mx-auto">
         {/* Desktop Menu */}
         <nav className="hidden justify-between lg:flex items-center">
@@ -99,16 +111,10 @@ const Navbar1 = () => {
             {isAuth && (
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-blue-400" />
-
-
-                <form onSubmit={handleSubmit}>
+                <form>
                   <Select
-                    
-                    defaultValue={selectedCity || ""}
-                    onValueChange={async value => dispatch(
-                      setSelectedCity(value),
-                      await localStorage.setItem("selectedCity", value)
-                    )}
+                    value={displayCity}
+                    onValueChange={handleCityChange}
                     className="w-full"
                   >
                     <SelectTrigger className="h-10 w-48 bg-[#16213a] border-2 border-blue-400/50 text-gray-300 hover:bg-[#1a2441] hover:border-blue-400 transition-all duration-300 rounded-xl font-medium shadow-md hover:scale-105">
@@ -124,9 +130,6 @@ const Navbar1 = () => {
                           {city.label}
                         </SelectItem>
                       ))}
-                      <button className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-blue-700 hover:scale-105 transition-transform duration-300 w-full ">
-                        Submit
-                      </button>
                     </SelectContent>
                   </Select>
                 </form>
@@ -143,10 +146,19 @@ const Navbar1 = () => {
               </div>
             ) : (
               <div className="flex gap-3">
-                <Button asChild variant="outline" size="sm" className="border-2 border-blue-400 text-white hover:bg-blue-500 hover:text-white hover:scale-105 transition-all duration-300 rounded-full px-6 font-semibold shadow-md">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="border-2 border-blue-400 text-white hover:bg-blue-500 hover:text-white hover:scale-105 transition-all duration-300 rounded-full px-6 font-semibold shadow-md"
+                >
                   <a href={auth.login.url}>{auth.login.title}</a>
                 </Button>
-                <Button asChild size="sm" className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white hover:scale-105 transition-all duration-300 rounded-full px-6 font-semibold shadow-lg">
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white hover:scale-105 transition-all duration-300 rounded-full px-6 font-semibold shadow-lg"
+                >
                   <a href={auth.signup.url}>{auth.signup.title}</a>
                 </Button>
               </div>
@@ -164,7 +176,11 @@ const Navbar1 = () => {
           </a>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="border-2 border-blue-400 text-white hover:bg-blue-600 hover:text-white transition-all duration-300 rounded-xl shadow-md hover:scale-105">
+              <Button
+                variant="outline"
+                size="icon"
+                className="border-2 border-blue-400 text-white hover:bg-blue-600 hover:text-white transition-all duration-300 rounded-xl shadow-md hover:scale-105"
+              >
                 <Menu className="size-5" />
               </Button>
             </SheetTrigger>
@@ -193,7 +209,7 @@ const Navbar1 = () => {
                     </a>
                   ))}
 
-                  {/* City Selector in Mobile - Always visible, behavior depends on auth status */}
+                  {/* City Selector in Mobile - Always visible */}
                   <div className="mt-4">
                     <div className="flex items-center gap-2 mb-2">
                       <MapPin className="w-4 h-4 text-blue-400" />
@@ -202,13 +218,17 @@ const Navbar1 = () => {
                       </span>
                     </div>
                     <Select
+                      value={displayCity}
+                      onValueChange={handleCityChange}
                       className="w-full"
-
                     >
                       <SelectTrigger className="h-12 w-full bg-[#16213a] border-blue-900/30 text-gray-300 hover:bg-[#1a2441] transition-colors duration-200">
                         <SelectValue placeholder="Select city or airport" />
                       </SelectTrigger>
-                      <SelectContent side="bottom" className="bg-[#16213a] text-gray-300 border-blue-900/30">
+                      <SelectContent
+                        side="bottom"
+                        className="bg-[#16213a] text-gray-300 border-blue-900/30"
+                      >
                         {cities.map((city) => (
                           <SelectItem
                             key={city.value}
@@ -231,10 +251,17 @@ const Navbar1 = () => {
                     </div>
                   ) : (
                     <>
-                      <Button asChild variant="outline" className="border-2 border-blue-400 text-white hover:bg-blue-500 hover:text-white transition-all duration-300 rounded-xl font-semibold py-6">
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="border-2 border-blue-400 text-white hover:bg-blue-500 hover:text-white transition-all duration-300 rounded-xl font-semibold py-6"
+                      >
                         <a href={auth.login.url}>{auth.login.title}</a>
                       </Button>
-                      <Button asChild className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white transition-all duration-300 rounded-xl font-semibold py-6 shadow-lg">
+                      <Button
+                        asChild
+                        className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white transition-all duration-300 rounded-xl font-semibold py-6 shadow-lg"
+                      >
                         <a href={auth.signup.url}>{auth.signup.title}</a>
                       </Button>
                     </>

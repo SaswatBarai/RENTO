@@ -242,9 +242,10 @@ export const getVehicleController = asyncHandler(async (req, res) => {
 export const getAllVehicleController = asyncHandler(async (req, res) => {
     try {
         const allVehicle = await Vehicle.find({
-            availablity: true,
+            availability: true,
         });
 
+        console.log(allVehicle)
         if (!allVehicle || allVehicle.length === 0) {
             throw new ApiError(404, "No vehicles found");
         }

@@ -1,0 +1,93 @@
+Of course! Here is a clear and organized list of all the locations, sub-locations, and vehicle models used in the 40-item JSON file I generated for you.
+
+This will be very helpful for sourcing images and managing your data.
+
+1. Main Locations Used
+
+Bhubaneswar
+
+Delhi
+
+Mumbai
+
+2. Sub-locations Used (Grouped by City)
+
+Bhubaneswar
+
+Saheed Nagar
+
+Patia
+
+Khandagiri
+
+Jaydev Vihar
+
+Delhi
+
+Connaught Place
+
+Saket
+
+Dwarka
+
+Karol Bagh
+
+Mumbai
+
+Andheri
+
+Bandra
+
+Powai
+
+Dadar
+
+3. Vehicle Models Used (Make, Model, and Colors)
+
+Here is a list of every unique vehicle model and the specific colors I used for them in the JSON file. You can use this "Make + Model + Color" combination to find the right images.
+
+Ather
+
+450X: White, Green, Space Grey
+
+450S: Mint Green, Grey, White
+
+Bajaj
+
+Chetak: Silver, Ivory, Brooklyn Black, Hazelnut
+
+Bounce
+
+Infinity E1+: Black, Grey, Red
+
+Infinity E1: Yellow, White
+
+Hero
+
+Optima: Red, Blue, Grey
+
+Photon: White, Black
+
+Ola
+
+S1 Air: Blue, Black, Coral Glam
+
+S1 Pro: Matte Black, Red, Porcelain White
+
+Okinawa
+
+Praise Pro: Red, Glossy Red, Black
+
+Revolt
+
+RV400: Black, Grey, Cosmic Black
+
+RV300: Silver
+
+TVS
+
+iQube: Grey, White, Pearl White
+
+iQube ST: Blue
+
+This list should help you efficiently source the correct images for your vehicle database.

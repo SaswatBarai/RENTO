@@ -16,6 +16,7 @@ import { toast, Bounce } from "react-toastify";
 import { login } from "../state/authSlice.js"
 import { CookieStorage } from "cookie-storage"
 import { useGoogleLogin } from "@react-oauth/google"
+import {SetSelectedCity} from "../utils/setselectedcity.localStorage.js"
 
 
 export function LoginForm() {
@@ -98,7 +99,7 @@ export function LoginForm() {
           }
         
           navigate("/home")
-
+          SetSelectedCity();
           toast.success('Login Successfull', {
             position: "top-center",
             autoClose: 5000,

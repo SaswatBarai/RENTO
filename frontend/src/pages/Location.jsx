@@ -11,7 +11,6 @@ import { toast, Bounce } from "react-toastify";
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { showNav } from "../state/navHideSlice.js"
-import { SetSelectedCity } from '../utils/setselectedcity.localStorage.js';
 
 function Location() {
   const [location, setLocation] = useState("");
