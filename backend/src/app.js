@@ -15,7 +15,10 @@ app.use(morgan("dev"));
 
 import authRoutes from "./routes/auth.route.js";
 import vehicleRoutes from "./routes/vehicle.route.js"
+import orderRoutes from "./routes/order.route.js";
+
 
 app.use("/api/auth",authRoutes);
 app.use("/api/vehicle",vehicleRoutes)
+app.use("/api/order",orderRoutes)
 export {app};

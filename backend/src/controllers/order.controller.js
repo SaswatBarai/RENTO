@@ -15,7 +15,7 @@ export const createOrderController = asyncHandler(
             return res.status(400).json(
                 {
                     success: false,
-                    data: new ApiResponse(400, null, "Vehicle ID and hours are required")
+                    data: new ApiResponse(404, null, "Vehicle ID and hours are required")
                 }
             )
         }
