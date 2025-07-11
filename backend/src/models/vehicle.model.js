@@ -38,6 +38,21 @@ const vehicleSchema = new Schema({
         required:true,
         min:0
     },
+    maxSpeed:{
+        type:Number,
+        required:true,
+        min:0
+    },
+    range:{
+        type:Number,
+        required:true,
+        min:0
+    },
+    motorPower:{
+        type:Number,
+        required:true,
+        min:0
+    },
     image:{
        imageId:{
             type:String,
@@ -51,6 +66,11 @@ const vehicleSchema = new Schema({
     availability:{
         type:Boolean,
         default:true
+    },
+    description:{
+        type:String,
+        required:true,
+        trim:true
     },
     mainLocation:{
         type:String,

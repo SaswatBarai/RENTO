@@ -140,7 +140,7 @@ export const getAllVehicle = async () => {
 export const getVehicleById = async (vehicleId) => {
     try {
         const res = await axiosIntance.get(
-            `/vehicle/getAllVehicles/${vehicleId}`,
+            `/vehicle/getVehicle/${vehicleId}`,
             {
                 headers: {
                     "Content-Type": "application/json"

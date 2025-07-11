@@ -1,6 +1,8 @@
 [
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1a1",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1a1"
+    },
     "make": "Hero",
     "model": "Optima",
     "year": 2023,
@@ -8,17 +10,23 @@
     "number": "OD02AA1001",
     "color": "Red",
     "rentalRate": 20,
+    "maxSpeed": 42,
+    "range": 89,
+    "motorPower": 1900,
     "image": {
       "imageId": "hero_optima_red_1001",
       "imageUrl": "https://example.com/images/bikes/hero_optima_red.jpg"
     },
     "availability": true,
+    "description": "Discover the convenience of the 2023 Hero Optima, presented in a vibrant Red. As a Type1 scooter, it's the ideal choice for effortlessly navigating city streets. It offers a practical top speed of 42 km/h and a reliable range of 89 km, making it perfect for daily commutes and errands. Powered by an efficient 1900W motor, this dependable scooter ensures a smooth ride and is conveniently available for rent in Saheed Nagar, Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Saheed Nagar",
     "lastMaintenanceDate": "2025-06-20T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1a2",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1a2"
+    },
     "make": "Ather",
     "model": "450X",
     "year": 2024,
@@ -26,17 +34,23 @@
     "number": "OD02BB1002",
     "color": "White",
     "rentalRate": 35,
+    "maxSpeed": 90,
+    "range": 126,
+    "motorPower": 6400,
     "image": {
       "imageId": "ather_450x_white_1002",
       "imageUrl": "https://example.com/images/bikes/ather_450x_white.jpg"
     },
     "availability": true,
+    "description": "Experience the future of urban mobility with the 2024 Ather 450X in a crisp, clean White. This high-performance Type2 scooter is engineered for an exhilarating ride, boasting a powerful 6400W motor that delivers instant acceleration and a top speed of 90 km/h. With an impressive range of 126 km, it's perfect for both short trips and longer explorations. This cutting-edge scooter is available for rent in the bustling Patia area of Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Patia",
     "lastMaintenanceDate": "2025-07-01T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1a3",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1a3"
+    },
     "make": "Ola",
     "model": "S1 Air",
     "year": 2023,
@@ -44,17 +58,23 @@
     "number": "OD02CC1003",
     "color": "Blue",
     "rentalRate": 50,
+    "maxSpeed": 90,
+    "range": 151,
+    "motorPower": 6000,
     "image": {
       "imageId": "ola_s1air_blue_1003",
       "imageUrl": "https://example.com/images/bikes/ola_s1air_blue.jpg"
     },
     "availability": false,
+    "description": "Ride in style with the 2023 Ola S1 Air, featured in a stunning Blue. As a premium Type3 model, it offers a superior experience, combining a swift top speed of 90 km/h with an exceptional range of 151 km. Its robust 6000W motor provides a powerful yet smooth ride, perfect for those who demand more from their commute. Currently located in the vibrant Khandagiri neighborhood of Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Khandagiri",
     "lastMaintenanceDate": "2025-06-15T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1a4",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1a4"
+    },
     "make": "TVS",
     "model": "iQube",
     "year": 2024,
@@ -62,17 +82,23 @@
     "number": "OD02DD1004",
     "color": "Grey",
     "rentalRate": 22,
+    "maxSpeed": 78,
+    "range": 100,
+    "motorPower": 4400,
     "image": {
       "imageId": "tvs_iqube_grey_1004",
       "imageUrl": "https://example.com/images/bikes/tvs_iqube_grey.jpg"
     },
     "availability": true,
+    "description": "Enjoy a silent, smooth, and comfortable journey on the 2024 TVS iQube in a sleek Grey finish. This Type1 electric scooter is a perfect blend of performance and practicality, featuring a 4400W motor that reaches a top speed of 78 km/h. Its 100 km range is ideal for daily urban travel. This refined scooter is ready for you in Jaydev Vihar, Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Jaydev Vihar",
     "lastMaintenanceDate": "2025-06-18T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1a5",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1a5"
+    },
     "make": "Bounce",
     "model": "Infinity E1+",
     "year": 2024,
@@ -80,17 +106,23 @@
     "number": "OD02EE1005",
     "color": "Black",
     "rentalRate": 36,
+    "maxSpeed": 65,
+    "range": 70,
+    "motorPower": 2200,
     "image": {
       "imageId": "bounce_e1plus_black_1005",
       "imageUrl": "https://example.com/images/bikes/bounce_e1plus_black.jpg"
     },
     "availability": true,
+    "description": "Experience the freedom of swappable batteries with the 2024 Bounce Infinity E1+ in classic Black. This innovative Type2 scooter offers great value and flexibility, reaching a top speed of 65 km/h with its 2200W motor. With a range of 70 km, it's a smart choice for the savvy city rider. Available now in Saheed Nagar, Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Saheed Nagar",
     "lastMaintenanceDate": "2025-07-08T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1a6",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1a6"
+    },
     "make": "Bajaj",
     "model": "Chetak",
     "year": 2023,
@@ -98,17 +130,23 @@
     "number": "OD02FF1006",
     "color": "Silver",
     "rentalRate": 38,
+    "maxSpeed": 63,
+    "range": 127,
+    "motorPower": 3100,
     "image": {
       "imageId": "bajaj_chetak_silver_1006",
       "imageUrl": "https://example.com/images/bikes/bajaj_chetak_silver.jpg"
     },
     "availability": true,
+    "description": "Embrace timeless design with the 2023 Bajaj Chetak, a modern classic in elegant Silver. This Type2 scooter offers a graceful ride with a top speed of 63 km/h and an excellent range of 127 km, thanks to its efficient 3100W motor. It's the perfect blend of retro style and contemporary electric performance, available for rent in Patia, Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Patia",
     "lastMaintenanceDate": "2025-08-11T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1a7",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1a7"
+    },
     "make": "Okinawa",
     "model": "Praise Pro",
     "year": 2022,
@@ -116,17 +154,23 @@
     "number": "OD02GG1007",
     "color": "Red",
     "rentalRate": 19,
+    "maxSpeed": 56,
+    "range": 81,
+    "motorPower": 2700,
     "image": {
       "imageId": "okinawa_praisepro_red_1007",
       "imageUrl": "https://example.com/images/bikes/okinawa_praisepro_red.jpg"
     },
     "availability": true,
+    "description": "Get around town with ease on the 2022 Okinawa Praise Pro in a sporty Red. This economical and stylish Type1 model is perfect for your daily errands, featuring a 2700W motor, a top speed of 56 km/h, and a useful range of 81 km. It offers a zippy and efficient ride, and is available in the Khandagiri area of Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Khandagiri",
     "lastMaintenanceDate": "2025-08-01T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1a8",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1a8"
+    },
     "make": "Revolt",
     "model": "RV400",
     "year": 2024,
@@ -134,17 +178,23 @@
     "number": "OD02HH1008",
     "color": "Black",
     "rentalRate": 55,
+    "maxSpeed": 85,
+    "range": 150,
+    "motorPower": 3000,
     "image": {
       "imageId": "revolt_rv400_black_1008",
       "imageUrl": "https://example.com/images/bikes/revolt_rv400_black.jpg"
     },
     "availability": true,
+    "description": "Unleash the thrill of India's first AI-enabled motorcycle with the 2024 Revolt RV400 in an aggressive Black. This top-tier Type3 electric motorcycle delivers a dynamic riding experience with a top speed of 85 km/h and a long range of 150 km. Its 3000W motor provides impressive torque for an exciting ride. Available now in Jaydev Vihar, Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Jaydev Vihar",
     "lastMaintenanceDate": "2025-07-25T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1a9",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1a9"
+    },
     "make": "Hero",
     "model": "Photon",
     "year": 2023,
@@ -152,17 +202,23 @@
     "number": "OD02II1009",
     "color": "White",
     "rentalRate": 21,
+    "maxSpeed": 45,
+    "range": 90,
+    "motorPower": 1800,
     "image": {
       "imageId": "hero_photon_white_1009",
       "imageUrl": "https://example.com/images/bikes/hero_photon_white.jpg"
     },
     "availability": false,
+    "description": "The 2023 Hero Photon, in a clean White finish, is a practical and reliable choice for city riding. This Type1 scooter reaches a comfortable top speed of 45 km/h and offers a generous 90 km range, making it ideal for stress-free commutes. Its 1800W motor ensures quiet and efficient travel. Located in Saheed Nagar, Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Saheed Nagar",
     "lastMaintenanceDate": "2025-08-15T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1aa",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1aa"
+    },
     "make": "Ola",
     "model": "S1 Pro",
     "year": 2024,
@@ -170,17 +226,23 @@
     "number": "OD02JJ1010",
     "color": "Matte Black",
     "rentalRate": 58,
+    "maxSpeed": 120,
+    "range": 195,
+    "motorPower": 11000,
     "image": {
       "imageId": "ola_s1pro_black_1010",
       "imageUrl": "https://example.com/images/bikes/ola_s1pro_black.jpg"
     },
     "availability": true,
+    "description": "Command the road with the flagship 2024 Ola S1 Pro in sophisticated Matte Black. This premium Type3 scooter is a powerhouse, featuring a massive 11000W motor that propels it to a breathtaking top speed of 120 km/h. With an unrivaled range of 195 km, it sets the standard for electric scooter performance. Available for rent in Patia, Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Patia",
     "lastMaintenanceDate": "2025-08-20T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1ab",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1ab"
+    },
     "make": "TVS",
     "model": "iQube ST",
     "year": 2024,
@@ -188,17 +250,23 @@
     "number": "OD02KK1011",
     "color": "Blue",
     "rentalRate": 40,
+    "maxSpeed": 82,
+    "range": 150,
+    "motorPower": 4400,
     "image": {
       "imageId": "tvs_iqubest_blue_1011",
       "imageUrl": "https://example.com/images/bikes/tvs_iqubest_blue.jpg"
     },
     "availability": true,
+    "description": "Discover the feature-packed 2024 TVS iQube ST in a stylish Blue. This advanced Type2 model offers enhanced performance with a top speed of 82 km/h and an extended range of 150 km. The reliable 4400W motor ensures a responsive and enjoyable ride. This scooter is ready for you in Khandagiri, Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Khandagiri",
     "lastMaintenanceDate": "2025-07-30T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1ac",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1ac"
+    },
     "make": "Ather",
     "model": "450S",
     "year": 2023,
@@ -206,17 +274,23 @@
     "number": "OD02LL1012",
     "color": "Grey",
     "rentalRate": 33,
+    "maxSpeed": 90,
+    "range": 115,
+    "motorPower": 5400,
     "image": {
       "imageId": "ather_450s_grey_1012",
       "imageUrl": "https://example.com/images/bikes/ather_450s_grey.jpg"
     },
     "availability": true,
+    "description": "Ride smart with the efficient 2023 Ather 450S in a modern Grey. This Type2 scooter is a well-balanced machine, offering a brisk top speed of 90 km/h powered by a 5400W motor. Its certified range of 115 km makes it a dependable companion for your daily urban adventures. Available for rent in Jaydev Vihar, Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Jaydev Vihar",
     "lastMaintenanceDate": "2025-08-05T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1ad",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1ad"
+    },
     "make": "Bounce",
     "model": "Infinity E1",
     "year": 2022,
@@ -224,17 +298,23 @@
     "number": "OD02MM1013",
     "color": "Yellow",
     "rentalRate": 18,
+    "maxSpeed": 65,
+    "range": 85,
+    "motorPower": 1500,
     "image": {
       "imageId": "bounce_e1_yellow_1013",
       "imageUrl": "https://example.com/images/bikes/bounce_e1_yellow.jpg"
     },
     "availability": true,
+    "description": "Brighten up your ride with the 2022 Bounce Infinity E1 in a cheerful Yellow. This affordable Type1 scooter is perfect for those seeking convenience and style, offering a top speed of 65 km/h and a range of 85 km. Its 1500W motor provides a smooth and easy ride. Available in Jaydev Vihar, Bhubaneswar.",
     "mainLocation": "Bhubaneswar",
     "subLocation": "Jaydev Vihar",
     "lastMaintenanceDate": "2025-07-22T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1ae",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1ae"
+    },
     "make": "Hero",
     "model": "Photon",
     "year": 2022,
@@ -242,17 +322,23 @@
     "number": "DL08AA2001",
     "color": "Black",
     "rentalRate": 18,
+    "maxSpeed": 45,
+    "range": 90,
+    "motorPower": 1800,
     "image": {
       "imageId": "hero_photon_black_2001",
       "imageUrl": "https://example.com/images/bikes/hero_photon_black.jpg"
     },
     "availability": true,
+    "description": "Navigate the bustling streets of Delhi with the 2022 Hero Photon in classic Black. This Type1 scooter is a reliable and economical choice, offering a 90 km range and a top speed of 45 km/h from its 1800W motor. It's the perfect no-fuss vehicle for city travel, available at Connaught Place.",
     "mainLocation": "Delhi",
     "subLocation": "Connaught Place",
     "lastMaintenanceDate": "2025-07-05T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1af",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1af"
+    },
     "make": "Revolt",
     "model": "RV400",
     "year": 2023,
@@ -260,17 +346,23 @@
     "number": "DL08BB2002",
     "color": "Grey",
     "rentalRate": 32,
+    "maxSpeed": 85,
+    "range": 150,
+    "motorPower": 3000,
     "image": {
       "imageId": "revolt_rv400_grey_2002",
       "imageUrl": "https://example.com/images/bikes/revolt_rv400_grey.jpg"
     },
     "availability": true,
+    "description": "Experience a powerful and thrilling ride on the 2023 Revolt RV400 in a sleek Grey finish. This Type2 electric motorcycle features a 3000W motor that delivers a top speed of 85 km/h and an impressive 150 km range, making it ideal for longer city journeys. Available for rent in the popular Saket area of Delhi.",
     "mainLocation": "Delhi",
     "subLocation": "Saket",
     "lastMaintenanceDate": "2025-06-25T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1b0",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1b0"
+    },
     "make": "Bajaj",
     "model": "Chetak",
     "year": 2024,
@@ -278,17 +370,23 @@
     "number": "DL08CC2003",
     "color": "Ivory",
     "rentalRate": 38,
+    "maxSpeed": 63,
+    "range": 127,
+    "motorPower": 3100,
     "image": {
       "imageId": "bajaj_chetak_ivory_2003",
       "imageUrl": "https://example.com/images/bikes/bajaj_chetak_ivory.jpg"
     },
     "availability": false,
+    "description": "Ride with sophistication on the brand new 2024 Bajaj Chetak in an elegant Ivory color. This Type2 scooter beautifully marries retro style with modern electric technology, offering a smooth ride with a top speed of 63 km/h and a substantial range of 127 km. Currently located in Dwarka, Delhi.",
     "mainLocation": "Delhi",
     "subLocation": "Dwarka",
     "lastMaintenanceDate": "2025-07-02T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1b1",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1d1"
+    },
     "make": "Ola",
     "model": "S1 Pro",
     "year": 2023,
@@ -296,17 +394,23 @@
     "number": "DL08DD2004",
     "color": "Red",
     "rentalRate": 55,
+    "maxSpeed": 120,
+    "range": 195,
+    "motorPower": 11000,
     "image": {
       "imageId": "ola_s1pro_red_2004",
       "imageUrl": "https://example.com/images/bikes/ola_s1pro_red.jpg"
     },
     "availability": true,
+    "description": "Make a bold statement with the 2023 Ola S1 Pro in a striking Red. This premium Type3 scooter is all about performance, featuring a formidable 11000W motor that achieves a top speed of 120 km/h and an industry-leading range of 195 km. For the ultimate riding experience, this scooter is available in Karol Bagh, Delhi.",
     "mainLocation": "Delhi",
     "subLocation": "Karol Bagh",
     "lastMaintenanceDate": "2025-06-29T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1b2",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1d2"
+    },
     "make": "Revolt",
     "model": "RV300",
     "year": 2022,
@@ -314,17 +418,23 @@
     "number": "DL08EE2005",
     "color": "Silver",
     "rentalRate": 25,
+    "maxSpeed": 65,
+    "range": 180,
+    "motorPower": 1500,
     "image": {
       "imageId": "revolt_rv300_silver_2005",
       "imageUrl": "https://example.com/images/bikes/revolt_rv300_silver.jpg"
     },
     "availability": true,
+    "description": "The 2022 Revolt RV300 in Silver is a nimble and efficient Type1 electric motorcycle perfect for city streets. It boasts an incredible range of up to 180 km in eco mode, a top speed of 65 km/h, and a 1500W motor, making it a versatile choice for any urban rider. Available for rent at Connaught Place, Delhi.",
     "mainLocation": "Delhi",
     "subLocation": "Connaught Place",
     "lastMaintenanceDate": "2025-06-21T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1b3",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1b3"
+    },
     "make": "TVS",
     "model": "iQube",
     "year": 2024,
@@ -332,17 +442,23 @@
     "number": "DL08FF2006",
     "color": "White",
     "rentalRate": 24,
+    "maxSpeed": 78,
+    "range": 100,
+    "motorPower": 4400,
     "image": {
       "imageId": "tvs_iqube_white_2006",
       "imageUrl": "https://example.com/images/bikes/tvs_iqube_white.jpg"
     },
     "availability": true,
+    "description": "Enjoy a comfortable and quiet ride on the 2024 TVS iQube in a clean White. This Type1 electric scooter, with its 4400W motor, provides a top speed of 78 km/h and a solid 100 km range. It's an excellent choice for a refined and hassle-free commute. Available for rent in Saket, Delhi.",
     "mainLocation": "Delhi",
     "subLocation": "Saket",
     "lastMaintenanceDate": "2025-08-10T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1b4",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1b4"
+    },
     "make": "Ather",
     "model": "450X",
     "year": 2024,
@@ -350,17 +466,23 @@
     "number": "DL08GG2007",
     "color": "Green",
     "rentalRate": 48,
+    "maxSpeed": 90,
+    "range": 126,
+    "motorPower": 6400,
     "image": {
       "imageId": "ather_450x_green_2007",
       "imageUrl": "https://example.com/images/bikes/ather_450x_green.jpg"
     },
     "availability": true,
+    "description": "Stand out from the crowd with the high-performance 2024 Ather 450X in a unique Green. This top-of-the-line Type3 scooter is built for speed and agility, with a 6400W motor, a 90 km/h top speed, and a 126 km range. It offers an unmatched, thrilling ride, available now in Dwarka, Delhi.",
     "mainLocation": "Delhi",
     "subLocation": "Dwarka",
     "lastMaintenanceDate": "2025-08-18T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1b5",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1b5"
+    },
     "make": "Ola",
     "model": "S1 Air",
     "year": 2023,
@@ -368,17 +490,23 @@
     "number": "DL08HH2008",
     "color": "Black",
     "rentalRate": 34,
+    "maxSpeed": 90,
+    "range": 151,
+    "motorPower": 6000,
     "image": {
       "imageId": "ola_s1air_black_2008",
       "imageUrl": "https://example.com/images/bikes/ola_s1air_black.jpg"
     },
     "availability": true,
+    "description": "The 2023 Ola S1 Air in timeless Black is a stylish and practical Type2 scooter. It perfectly balances performance and range, boasting a 90 km/h top speed and an impressive 151 km range, all powered by a 6000W motor. A great all-rounder available in Karol Bagh, Delhi.",
     "mainLocation": "Delhi",
     "subLocation": "Karol Bagh",
     "lastMaintenanceDate": "2025-07-28T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1b6",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1b6"
+    },
     "make": "Hero",
     "model": "Optima",
     "year": 2023,
@@ -386,17 +514,23 @@
     "number": "DL08II2009",
     "color": "Blue",
     "rentalRate": 20,
+    "maxSpeed": 42,
+    "range": 89,
+    "motorPower": 1900,
     "image": {
       "imageId": "hero_optima_blue_2009",
       "imageUrl": "https://example.com/images/bikes/hero_optima_blue.jpg"
     },
     "availability": true,
+    "description": "The 2023 Hero Optima in a cool Blue is a dependable Type1 scooter for your daily commute. With its 42 km/h top speed and 89 km range, it's an efficient and budget-friendly choice for navigating the city. Ready for rent at Connaught Place, Delhi.",
     "mainLocation": "Delhi",
     "subLocation": "Connaught Place",
     "lastMaintenanceDate": "2025-08-02T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1b7",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1b7"
+    },
     "make": "Okinawa",
     "model": "Praise Pro",
     "year": 2022,
@@ -404,17 +538,23 @@
     "number": "DL08JJ2010",
     "color": "Glossy Red",
     "rentalRate": 19,
+    "maxSpeed": 56,
+    "range": 81,
+    "motorPower": 2700,
     "image": {
       "imageId": "okinawa_praisepro_red_2010",
       "imageUrl": "https://example.com/images/bikes/okinawa_praisepro_red.jpg"
     },
     "availability": false,
+    "description": "A 2022 Okinawa Praise Pro in a vibrant Glossy Red. This affordable and zippy Type1 scooter reaches a top speed of 56 km/h and offers a range of 81 km, making it a fantastic choice for quick trips. This scooter is located in Saket, Delhi.",
     "mainLocation": "Delhi",
     "subLocation": "Saket",
     "lastMaintenanceDate": "2025-07-14T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1b8",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1b8"
+    },
     "make": "Bounce",
     "model": "Infinity E1+",
     "year": 2024,
@@ -422,17 +562,23 @@
     "number": "DL08KK2011",
     "color": "Grey",
     "rentalRate": 35,
+    "maxSpeed": 65,
+    "range": 70,
+    "motorPower": 2200,
     "image": {
       "imageId": "bounce_e1plus_grey_2011",
       "imageUrl": "https://example.com/images/bikes/bounce_e1plus_grey.jpg"
     },
     "availability": true,
+    "description": "The 2024 Bounce Infinity E1+ in a modern Grey offers the ultimate convenience with its swappable battery system. This Type2 scooter, with a top speed of 65 km/h and a 70 km range, is a smart and flexible mobility solution. Available now in Karol Bagh, Delhi.",
     "mainLocation": "Delhi",
     "subLocation": "Karol Bagh",
     "lastMaintenanceDate": "2025-08-22T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1b9",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1b9"
+    },
     "make": "Bajaj",
     "model": "Chetak",
     "year": 2023,
@@ -440,17 +586,23 @@
     "number": "DL08LL2012",
     "color": "Brooklyn Black",
     "rentalRate": 39,
+    "maxSpeed": 63,
+    "range": 127,
+    "motorPower": 3100,
     "image": {
       "imageId": "bajaj_chetak_black_2012",
       "imageUrl": "https://example.com/images/bikes/bajaj_chetak_black.jpg"
     },
     "availability": true,
+    "description": "The 2023 Bajaj Chetak in stylish Brooklyn Black exudes class and sophistication. This Type2 scooter provides a comfortable and stable ride with a 63 km/h top speed and a fantastic range of 127 km. A perfect choice for the discerning rider, available for rent in Saket, Delhi.",
     "mainLocation": "Delhi",
     "subLocation": "Saket",
     "lastMaintenanceDate": "2025-07-19T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1ba",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1ba"
+    },
     "make": "Ather",
     "model": "450S",
     "year": 2022,
@@ -458,17 +610,23 @@
     "number": "MH02AA3001",
     "color": "Mint Green",
     "rentalRate": 21,
+    "maxSpeed": 90,
+    "range": 115,
+    "motorPower": 5400,
     "image": {
       "imageId": "ather_450s_green_3001",
       "imageUrl": "https://example.com/images/bikes/ather_450s_green.jpg"
     },
     "availability": true,
+    "description": "Navigate Mumbai's streets on the 2022 Ather 450S in refreshing Mint Green. This smart Type1 scooter is built for performance, delivering a top speed of 90 km/h with its 5400W motor and a range of 115 km, making it perfect for the city's dynamic environment. Available in Andheri, Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Andheri",
     "lastMaintenanceDate": "2025-07-03T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1bb",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1bb"
+    },
     "make": "TVS",
     "model": "iQube ST",
     "year": 2024,
@@ -476,17 +634,23 @@
     "number": "MH02BB3002",
     "color": "Blue",
     "rentalRate": 52,
+    "maxSpeed": 82,
+    "range": 150,
+    "motorPower": 4400,
     "image": {
       "imageId": "tvs_iqube_st_blue_3002",
       "imageUrl": "https://example.com/images/bikes/tvs_iqube_st_blue.jpg"
     },
     "availability": true,
+    "description": "The top-end 2024 TVS iQube ST in a vibrant Blue offers a premium commuting experience. This Type3 scooter features a large touchscreen dash, a top speed of 82 km/h, and an impressive 150 km range, ensuring both style and substance. Available for rent in the trendy Bandra area of Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Bandra",
     "lastMaintenanceDate": "2025-06-17T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1bc",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1bc"
+    },
     "make": "Bounce",
     "model": "Infinity E1",
     "year": 2023,
@@ -494,17 +658,23 @@
     "number": "MH02CC3003",
     "color": "White",
     "rentalRate": 34,
+    "maxSpeed": 65,
+    "range": 85,
+    "motorPower": 1500,
     "image": {
       "imageId": "bounce_e1_white_3003",
       "imageUrl": "https://example.com/images/bikes/bounce_e1_white.jpg"
     },
     "availability": false,
+    "description": "A 2023 Bounce Infinity E1 in a clean White finish offers a flexible and affordable ride. This Type2 scooter, with its 65 km/h top speed and 85 km range, is all about convenient urban travel with the option of battery swapping. Located in the tech hub of Powai, Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Powai",
     "lastMaintenanceDate": "2025-07-07T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1bd",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1bd"
+    },
     "make": "Okinawa",
     "model": "Praise Pro",
     "year": 2023,
@@ -512,17 +682,23 @@
     "number": "MH02DD3004",
     "color": "Black",
     "rentalRate": 49,
+    "maxSpeed": 56,
+    "range": 81,
+    "motorPower": 2700,
     "image": {
       "imageId": "okinawa_praise_black_3004",
       "imageUrl": "https://example.com/images/bikes/okinawa_praise_black.jpg"
     },
     "availability": true,
+    "description": "The 2023 Okinawa Praise Pro in classic Black is a powerful Type3 scooter designed for performance. With a 2700W motor, it offers a spirited ride and a top speed of 56 km/h, while still providing a practical range of 81 km. Available for rent in the heart of Mumbai at Dadar.",
     "mainLocation": "Mumbai",
     "subLocation": "Dadar",
     "lastMaintenanceDate": "2025-06-22T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1be",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1be"
+    },
     "make": "Ola",
     "model": "S1 Pro",
     "year": 2024,
@@ -530,17 +706,23 @@
     "number": "MH02EE3005",
     "color": "Porcelain White",
     "rentalRate": 60,
+    "maxSpeed": 120,
+    "range": 195,
+    "motorPower": 11000,
     "image": {
       "imageId": "ola_s1pro_white_3005",
       "imageUrl": "https://example.com/images/bikes/ola_s1pro_white.jpg"
     },
     "availability": true,
+    "description": "Experience the pinnacle of electric scooter technology with the 2024 Ola S1 Pro in elegant Porcelain White. This top-tier Type3 scooter is engineered for those who want it all: a staggering 120 km/h top speed, a massive 195 km range, and an 11000W motor. Available in the bustling suburb of Andheri, Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Andheri",
     "lastMaintenanceDate": "2025-08-25T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1bf",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1bf"
+    },
     "make": "Bajaj",
     "model": "Chetak",
     "year": 2024,
@@ -548,17 +730,23 @@
     "number": "MH02FF3006",
     "color": "Hazelnut",
     "rentalRate": 40,
+    "maxSpeed": 63,
+    "range": 127,
+    "motorPower": 3100,
     "image": {
       "imageId": "bajaj_chetak_hazelnut_3006",
       "imageUrl": "https://example.com/images/bikes/bajaj_chetak_hazelnut.jpg"
     },
     "availability": true,
+    "description": "The 2024 Bajaj Chetak in a unique Hazelnut color combines iconic design with modern functionality. This stylish Type2 scooter provides a comfortable ride with a top speed of 63 km/h and an impressive range of 127 km, perfect for navigating the city in style. Available for rent in Bandra, Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Bandra",
     "lastMaintenanceDate": "2025-08-14T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1c0",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1c0"
+    },
     "make": "Revolt",
     "model": "RV400",
     "year": 2023,
@@ -566,17 +754,23 @@
     "number": "MH02GG3007",
     "color": "Cosmic Black",
     "rentalRate": 37,
+    "maxSpeed": 85,
+    "range": 150,
+    "motorPower": 3000,
     "image": {
       "imageId": "revolt_rv400_black_3007",
       "imageUrl": "https://example.com/images/bikes/revolt_rv400_black.jpg"
     },
     "availability": true,
+    "description": "A 2023 Revolt RV400 in Cosmic Black is ready for an exciting ride through Mumbai. This Type2 electric motorcycle combines a powerful 3000W motor with an 85 km/h top speed and a 150 km range, offering a perfect mix of performance and practicality. Available in Powai, Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Powai",
     "lastMaintenanceDate": "2025-07-24T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1c1",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1c1"
+    },
     "make": "Hero",
     "model": "Optima",
     "year": 2022,
@@ -584,17 +778,23 @@
     "number": "MH02HH3008",
     "color": "Grey",
     "rentalRate": 19,
+    "maxSpeed": 42,
+    "range": 89,
+    "motorPower": 1900,
     "image": {
       "imageId": "hero_optima_grey_3008",
       "imageUrl": "https://example.com/images/bikes/hero_optima_grey.jpg"
     },
     "availability": true,
+    "description": "The 2022 Hero Optima in a smart Grey is an affordable and reliable Type1 scooter. It is an ideal choice for navigating dense city traffic, offering a range of 89 km and a top speed of 42 km/h. This practical scooter is available in Dadar, Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Dadar",
     "lastMaintenanceDate": "2025-06-30T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1c2",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1c2"
+    },
     "make": "Ather",
     "model": "450X",
     "year": 2024,
@@ -602,17 +802,23 @@
     "number": "MH02II3009",
     "color": "Space Grey",
     "rentalRate": 50,
+    "maxSpeed": 90,
+    "range": 126,
+    "motorPower": 6400,
     "image": {
       "imageId": "ather_450x_grey_3009",
       "imageUrl": "https://example.com/images/bikes/ather_450x_grey.jpg"
     },
     "availability": true,
+    "description": "The 2024 Ather 450X in futuristic Space Grey is a premium Type3 scooter that delivers an electrifying performance. With its powerful 6400W motor, it zips to a top speed of 90 km/h and provides a confident 126 km range. Available for rent in Andheri, Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Andheri",
     "lastMaintenanceDate": "2025-09-01T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1c3",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1c3"
+    },
     "make": "TVS",
     "model": "iQube",
     "year": 2023,
@@ -620,17 +826,23 @@
     "number": "MH02JJ3010",
     "color": "Pearl White",
     "rentalRate": 23,
+    "maxSpeed": 78,
+    "range": 100,
+    "motorPower": 4400,
     "image": {
       "imageId": "tvs_iqube_white_3010",
       "imageUrl": "https://example.com/images/bikes/tvs_iqube_white.jpg"
     },
     "availability": false,
+    "description": "A 2023 TVS iQube in elegant Pearl White is a great choice for a smooth and silent ride. This Type1 scooter provides a balanced performance with a 78 km/h top speed and 100 km range from its capable 4400W motor. Currently located in Bandra, Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Bandra",
     "lastMaintenanceDate": "2025-08-08T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1c4",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1c4"
+    },
     "make": "Ola",
     "model": "S1 Air",
     "year": 2024,
@@ -638,17 +850,23 @@
     "number": "MH02KK3011",
     "color": "Coral Glam",
     "rentalRate": 36,
+    "maxSpeed": 90,
+    "range": 151,
+    "motorPower": 6000,
     "image": {
       "imageId": "ola_s1air_coral_3011",
       "imageUrl": "https://example.com/images/bikes/ola_s1air_coral.jpg"
     },
     "availability": true,
+    "description": "Show off your style with the 2024 Ola S1 Air in the trendy Coral Glam color. This Type2 scooter is not just about looks; it delivers a 90 km/h top speed and a fantastic 151 km range, making it both fun and functional. Available for rent in Powai, Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Powai",
     "lastMaintenanceDate": "2025-09-05T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1c5",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1c5"
+    },
     "make": "Bounce",
     "model": "Infinity E1+",
     "year": 2023,
@@ -656,17 +874,23 @@
     "number": "MH02LL3012",
     "color": "Red",
     "rentalRate": 33,
+    "maxSpeed": 65,
+    "range": 70,
+    "motorPower": 2200,
     "image": {
       "imageId": "bounce_e1plus_red_3012",
       "imageUrl": "https://example.com/images/bikes/bounce_e1plus_red.jpg"
     },
     "availability": true,
+    "description": "A 2023 Bounce Infinity E1+ in a bold Red offers a smart and convenient way to travel. This Type2 scooter features a 2200W motor, a top speed of 65 km/h, and a 70 km range, with the added benefit of battery swapping. Ready for you in Dadar, Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Dadar",
     "lastMaintenanceDate": "2025-08-28T00:00:00.000Z"
   },
   {
-    "_id": "64adf1c1e1b1a1a1a1a1a1c6",
+    "_id": {
+      "$oid": "64adf1c1e1b1a1a1a1a1a1c6"
+    },
     "make": "Ather",
     "model": "450S",
     "year": 2023,
@@ -674,11 +898,15 @@
     "number": "MH02MM3013",
     "color": "White",
     "rentalRate": 22,
+    "maxSpeed": 90,
+    "range": 115,
+    "motorPower": 5400,
     "image": {
       "imageId": "ather_450s_white_3013",
       "imageUrl": "https://example.com/images/bikes/ather_450s_white.jpg"
     },
     "availability": true,
+    "description": "The smart 2023 Ather 450S in a crisp White is a reliable and high-performing Type1 scooter. It features a powerful 5400W motor that provides a top speed of 90 km/h and a solid range of 115 km, perfect for an exhilarating and efficient commute. Available for rent in Powai, Mumbai.",
     "mainLocation": "Mumbai",
     "subLocation": "Powai",
     "lastMaintenanceDate": "2025-08-12T00:00:00.000Z"

@@ -20,11 +20,15 @@ export const addVehicleController = asyncHandler(async (req, res) => {
             rentalRate,
             mainLocation,
             subLocation,
+            description,
+            maxSpeed,
+            range,
+            motorPower,
             lastMaintenanceDate,
         } = req.body;
 
         if (
-            [make, model, type, number, color, mainLocation, subLocation].some(
+            [make, model, type, number, color, mainLocation,description,range,motorPower,subLocation].some(
                 (val) => typeof val !== "string" || val.trim() === ""
             )
         ) {
@@ -59,6 +63,10 @@ export const addVehicleController = asyncHandler(async (req, res) => {
             type,
             number,
             color,
+            description,
+            maxSpeed,
+            range,
+            motorPower,
             image: {
                 imageId: uploadedImage.public_id,
                 imageUrl: uploadedImage.secure_url,
@@ -76,6 +84,7 @@ export const addVehicleController = asyncHandler(async (req, res) => {
     } catch (error) {
         console.error("Error in addVehicleController:", error);
         if (error instanceof ApiError) {
+            console.log(error.message)
             return res.status(error.statusCode).json({
                 success: false,
                 message: error.message,
@@ -84,7 +93,7 @@ export const addVehicleController = asyncHandler(async (req, res) => {
         }
         return res.status(500).json({
             success: false,
-            message: "Internal Server Error",
+            message:error.message,
             statusCode: 500,
         });
     }
@@ -133,7 +142,6 @@ export const removeVehicleController = asyncHandler(async (req, res) => {
 export const getVehicleController = asyncHandler(async (req, res) => {
     try {
         const { vehicleId } = req.params;
-
         if (!vehicleId) {
             throw new ApiError(400, "Missing Vehicle ID");
         }
@@ -206,8 +214,20 @@ export const getVehicleController = asyncHandler(async (req, res) => {
 
         // Case 2: If user is NOT authenticated
         else {
-            console.log("Mark 2")
-            const vehicle = await Vehicle.findById(vehicleId);
+
+            const vehicle = await Vehicle.findOne({
+                _id: vehicleId,
+                availability: true,
+            })
+            // const vehicle = await Vehicle.aggregate([
+            //     {
+            //         $match: {
+            //             _id: new mongoose.Types.ObjectId(vehicleId),
+            //             availability: true,
+            //         },
+            //     }
+            // ])
+            
             if (!vehicle) {
                 throw new ApiError(404, "Vehicle not found");
             }
@@ -222,7 +242,6 @@ export const getVehicleController = asyncHandler(async (req, res) => {
             });
         }
     } catch (error) {
-        console.log(error.message);
         if (error instanceof ApiError) {
             return res.status(error.statusCode).json({
                 success: false,
@@ -245,7 +264,6 @@ export const getAllVehicleController = asyncHandler(async (req, res) => {
             availability: true,
         });
 
-        console.log(allVehicle)
         if (!allVehicle || allVehicle.length === 0) {
             throw new ApiError(404, "No vehicles found");
         }
@@ -302,7 +320,6 @@ export const getVehicleByMainLocation = asyncHandler(
                 });
             }
             else{
-                console.log(error.message);
                 return res.status(500).json({
                     success: false,
                     message: "Internal Server Error",

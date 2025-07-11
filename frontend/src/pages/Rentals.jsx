@@ -17,9 +17,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import { MapPin, Calendar, Clock } from "lucide-react";
 import { Spinner } from "../components/ui/Spinner.jsx";
 import { useFetchVehicles } from "../utils/fetchRentals.js";
-
+import { useNavigate } from "react-router-dom"
 function Rentals() {
   showNav();
+
 
   const { data: fetchData, isLoading, error, isError } = useFetchVehicles();
 
@@ -58,8 +59,8 @@ function Rentals() {
         .react-datepicker__input-container input {
           border-radius: 0.375rem;
           transition: all 0.3s ease;
-        }
-
+          }
+          
         .react-datepicker__input-container input:focus {
           ring: 2px solid #3b82f6;
           border-color: #3b82f6;
@@ -68,22 +69,22 @@ function Rentals() {
         /* Card hover effect */
         .vehicle-card {
           transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+          }
 
-        .vehicle-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Button hover effect */
-        .custom-button {
+          .vehicle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            }
+            
+            /* Button hover effect */
+            .custom-button {
           transition: all 0.3s ease;
         }
 
         .custom-button:hover {
           transform: scale(1.05);
         }
-      `}</style>
+        `}</style>
     </>
   );
 }
@@ -101,6 +102,7 @@ const MainContent = ({ data }) => {
   const handlePrev = () => {
     if (currentPage > 1) setCurrentPage(prev => prev - 1);
   };
+  const navigate = useNavigate();
 
   const handleNext = () => {
     if (currentPage < totalPages) setCurrentPage(prev => prev + 1);
@@ -178,8 +180,15 @@ const MainContent = ({ data }) => {
       {/* Vehicle Cards */}
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4 md:px-8">
         {currentVehicles.map((item) => (
-          <div key={item._id} className="vehicle-card animate-fade-in">
+          <div key={item._id}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation(); // Prevent default behavior and stop event bubbling
+              navigate(`/rentals/${item._id}`);
+            }}
+            className="vehicle-card animate-fade-in">
             <ProductCard
+
               make={item.make}
               model={item.model}
               rentalRate={item.rentalRate}

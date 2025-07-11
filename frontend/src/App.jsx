@@ -11,6 +11,7 @@ import { RegisterForm } from './components/RegisterForm.jsx';
 import {GoogleWrapper} from "./components/wrapper/GoogleWrapper.jsx"
 import {AuthCheck} from "./utils/checkAuth.js"
 import { ErrorSection } from './pages/Error.jsx';
+import {SingleVehicle} from "./pages/SingleVehicle.jsx"
 // import {SetSelectedCity} from "./utils/setselectedcity.localStorage.js"
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route index path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
         <Route path='/rentals' element={<Rentals />} />
+        <Route path='/rentals/:vehicleId' element={<SingleVehicle/>} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/help' element={<Help />} />
         <Route path='/first/Setlocation' element={<Location />} />
