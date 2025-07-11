@@ -1,5 +1,6 @@
 import { Label } from "@/components/ui/label"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
+import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -8,12 +9,14 @@ import { ArrowLeft, Star, Battery, Users, Zap, Calendar, Clock, Gauge } from "lu
 import {useParams} from "react-router-dom";
 import { useGetVehicleById } from "../utils/query.util.js";
 import {Spinner} from "../components/ui/Spinner.jsx"
+import { useState } from "react"
 
 
 export function SingleVehicle() {
   const { vehicleId } = useParams();
 
   const { data, isLoading, error } = useGetVehicleById(vehicleId);
+  const [hours , setHours] = useState(1);
   
   const fetchedData = data?.data?.data;
   if (isLoading) {
@@ -175,25 +178,18 @@ export function SingleVehicle() {
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
+                  <div className="space-y-2 flex flex-col w-1/3 ">
                     <Label className="text-white">Rental Duration</Label>
-                    <Select defaultValue="1">
-                      <SelectTrigger className="h-11 bg-[#1c2a44] border-blue-900/30 text-gray-200 focus:ring-2 focus:ring-blue-500">
-                        <SelectValue placeholder="Select days" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-[#1c2a44] text-gray-200 border-blue-900/30">
-                        <SelectItem value="1">1 Day - ₹58</SelectItem>
-                        <SelectItem value="2">2 Days - ₹110 (5% off)</SelectItem>
-                        <SelectItem value="3">3 Days - ₹157 (10% off)</SelectItem>
-                        <SelectItem value="7">1 Week - ₹350 (15% off)</SelectItem>
-                        <SelectItem value="30">1 Month - ₹1,276 (25% off)</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <Input type="number" id="hours"
+                    className="h-11 bg-[#1c2a44] rounded-[8px] border-blue-900/30 text-gray-200 focus:ring-2 focus:ring-blue-500 p-5"
+                    onChange = {(e) =>setHours(e.target.value)}
+                    placeholder="Enter hours"
+                    min="1" />
                   </div>
                   
                   <div className="pt-4">
                     <Button className="w-full h-12 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-[1.02]">
-                      Book Now - ₹58
+                      Book Now - ₹{fetchedData?.rentalRate * hours}
                     </Button>
                   </div>
                 </form>
