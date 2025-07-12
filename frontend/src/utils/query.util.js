@@ -8,6 +8,8 @@ import {
   getLocation,
   setLocation,
   getVehicleByLocation,
+  createOrder,
+  verifyPayment
 } from "./axios.js";
 
 export const useLogin = () => {
@@ -55,7 +57,7 @@ export const useGetVehicleById = (id) => {
   return useQuery({
     queryKey: ["getVehicleById", id],
     queryFn: () => getVehicleById(id),
-    gcTime: 1000 * 60 * 2,
+    gcTime: 1000 * 60 * 4,
   });
 };
 
@@ -66,3 +68,17 @@ export const useGetVehicleByLocation = (selectedLocation) => {
     gcTime: 1000 * 60 * 2,
   });
 };
+
+
+export const useCreateOrder = () => {
+  return useMutation({
+    mutationFn: createOrder,
+  })
+}
+
+
+export const useVerifyPayment = () => {
+  return useMutation({
+    mutationFn: verifyPayment,
+  })
+}

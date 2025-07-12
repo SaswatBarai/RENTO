@@ -217,4 +217,53 @@ export const getVehicleByLocation = async(selectedLocation) => {
     }
 }
 
+export const createOrder = async ({vehicleId, hours,pickupDate,pickupTime}) => {
+    try {
+        const res = await axiosIntance.post(
+            "/order/create-order",
+            {
+                vehicleId,
+                hours,
+                pickupDate,
+                pickupTime
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true
+            }
+        );
+        // console.log("Order created successfully:", res.data);
+        return res.data;
+    } catch (error) {
+        console.error("Error creating order:", error.response?.data?.message);
+        throw error;
+    }
+}
+export const verifyPayment = async ({orderId, paymentId, signature, bookingId}) => {
+    try {
+        const res = await axiosIntance.post(
+            "/order/verify-payment",
+            {
+                orderId,
+                paymentId,
+                signature,
+                bookingId
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true
+            }
+        );
+        console.log("Payment verified successfully:", res.data);
+        return res.data;
+    } catch (error) {
+        console.error("Error verifying payment:", error.response?.data?.message);
+        throw error;
+    }
+}
+
 export default axiosIntance;
