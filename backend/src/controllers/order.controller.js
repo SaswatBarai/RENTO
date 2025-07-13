@@ -40,6 +40,8 @@ export const createOrderController = asyncHandler(
         })
 
         const booking = await Booking.create({
+            name: vehicle.make+""+vehicle.model,
+            vehicleNumber: vehicle.number,
             userId,
             vehicleId,
             pickupDate,
@@ -206,7 +208,7 @@ export const getAllOrder = asyncHandler(
           
           //Pagination parameter 
           const page = parseInt(req.query.page) || 1;
-          const limit = parseInt(req.query.limit) || 10;
+          const limit = parseInt(req.query.limit) || 8;
           const skip = (page-1) * limit;
 
 
@@ -238,6 +240,7 @@ export const getAllOrder = asyncHandler(
           })
           
         } catch (error) {
+            console.log(error.message);
             if(error instanceof ApiError){
                 return res.status(error.statusCode).json({
                     success:false,

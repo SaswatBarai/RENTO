@@ -9,7 +9,8 @@ import {
   setLocation,
   getVehicleByLocation,
   createOrder,
-  verifyPayment
+  verifyPayment,
+  getBookings
 } from "./axios.js";
 
 export const useLogin = () => {
@@ -69,6 +70,14 @@ export const useGetVehicleByLocation = (selectedLocation) => {
   });
 };
 
+export const useGetBookings = ({page, limit, sortBy, sortOrder, status}) => {
+  return useQuery({
+    queryKey:["getBookings", page, limit, sortBy, sortOrder, status],
+    queryFn: () => getBookings({page, limit, sortBy, sortOrder, status}),
+    gcTime: 1000 * 60 * 2,
+    keepPreviousData: true,
+  })
+}
 
 export const useCreateOrder = () => {
   return useMutation({

@@ -266,4 +266,22 @@ export const verifyPayment = async ({orderId, paymentId, signature, bookingId}) 
     }
 }
 
+export const getBookings = async ({page, limit, sortBy, sortOrder, status}) => {
+    try {
+       const res = await axiosIntance.get(`/order/bookings?page=${page}&limit=${limit}&sortBy=${sortBy}&sortOrder=${sortOrder}&status=${status}`,
+        {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            withCredentials: true
+        }
+       ) 
+         console.log("Bookings fetched successfully:", res.data);
+        return res.data;
+    } catch (error) {
+        console.error("Error fetching bookings:", error.response?.data?.message);
+        throw error;
+    }
+}
+
 export default axiosIntance;
