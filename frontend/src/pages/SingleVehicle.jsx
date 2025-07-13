@@ -180,6 +180,7 @@ export function SingleVehicle() {
                     }
                     // CHANGE: Reset loading state on success
                     setIsBookLoading(false);
+                    navigate("/rentals");
                   },
                   onError: (error) => {
                     console.error("Payment verification error:", error);

@@ -1,6 +1,7 @@
-import React from "react";
-import { Menu, MapPin } from "lucide-react";
+import React, { useState } from "react";
+import { Menu, MapPin, Link } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link as RouterLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -24,7 +25,7 @@ import {
 } from "@/components/ui/select";
 import { Profile } from "../components/Profile.jsx";
 import { setSelectedCity } from "../state/locationSlice.js";
-import {SetSelectedCity} from "../utils/setselectedcity.localStorage.js";
+import { SetSelectedCity } from "../utils/setselectedcity.localStorage.js";
 
 const menu = [
   { title: "Home", url: "/" },
@@ -48,25 +49,31 @@ const cities = [
   { value: "mumbai", label: "Mumbai, India" },
 ];
 
+
 const Navbar1 = () => {
   const dispatch = useDispatch();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
   const hide = useSelector((state) => state.navHide.isHide);
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
-  const userLocation = useSelector((state) => state.auth.location);
   const profileUrl = user?.profilePicture || null;
+  const userLocation = useSelector((state) => state.auth.location);
   const selectedCity = useSelector((state) => state.location.selectedCity);
 
   SetSelectedCity();
 
   const handleCityChange = async (value) => {
-    dispatch(setSelectedCity(value)); 
-    localStorage.setItem("selectedCity", value); 
-    
+    dispatch(setSelectedCity(value));
+    localStorage.setItem("selectedCity", value);
+
     // If user is authenticated, also update the user's location on the backend
     if (isAuth) {
       //
     }
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   const displayCity = selectedCity || userLocation || "";
@@ -136,12 +143,31 @@ const Navbar1 = () => {
             )}
 
             {isAuth && profileUrl ? (
-              <div className="flex items-center gap-3">
+              <div
+                className="relative flex items-center gap-3 cursor-pointer"
+                onMouseEnter={() => setIsDropdownOpen(true)}
+                onMouseLeave={() => setIsDropdownOpen(false)}
+              >
                 <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-[#101e36] rounded-full border border-blue-500/30">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                   <span className="text-sm font-medium text-white">Online</span>
                 </div>
                 <Profile profileUrl={`${profileUrl}`} />
+                {isDropdownOpen && (
+                  <div className="absolute top-12 right-0 bg-[#101e36] border border-blue-500/30 rounded-lg shadow-lg w-48">
+                    <ul className="flex flex-col">
+                      <li className="px-4 py-2 hover:bg-blue-500 hover:text-white transition-all">
+                        <RouterLink to="/bookings">Your Bookings</RouterLink>
+                      </li>
+                      <li className="px-4 py-2 hover:bg-blue-500 hover:text-white transition-all">
+                        <RouterLink to="/profile">Profile</RouterLink>
+                      </li>
+                      <li className="px-4 py-2 hover:bg-blue-500 hover:text-white transition-all">
+                        <RouterLink to="/logout">Logout</RouterLink>
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="flex gap-3">

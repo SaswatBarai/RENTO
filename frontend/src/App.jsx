@@ -12,7 +12,8 @@ import {GoogleWrapper} from "./components/wrapper/GoogleWrapper.jsx"
 import {AuthCheck} from "./utils/checkAuth.js"
 import { ErrorSection } from './pages/Error.jsx';
 import {SingleVehicle} from "./pages/SingleVehicle.jsx"
-import Booking from '../../backend/src/models/booking.model.js';
+import Bookings from "./pages/Bookings.jsx"
+// import Booking from '../../backend/src/models/booking.model.js';
 // import {SetSelectedCity} from "./utils/setselectedcity.localStorage.js"
 
 function App() {
@@ -28,8 +29,8 @@ function App() {
         <Route path='/rentals/:vehicleId' element={<SingleVehicle/>} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/help' element={<Help />} />
+      
         <Route path='/first/Setlocation' element={<Location />} />
-        <Route path='/booking' element={<Booking />} />
         <Route path="/login" element={
           <GoogleWrapper>
             <LoginForm />
@@ -41,6 +42,7 @@ function App() {
           </GoogleWrapper>
         } />
         <Route />
+        <Route path='/bookings' element={<Bookings />} />
         <Route path='*' element={<ErrorSection/>}/>
       </Route>
     </Routes>

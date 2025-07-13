@@ -14,6 +14,7 @@ export const createOrderController = asyncHandler(
         if (!vehicleId || !hours) {
             return res.status(400).json(
                 {
+                    
                     success: false,
                     data: new ApiResponse(404, null, "Vehicle ID and hours are required")
                 }
@@ -194,6 +195,62 @@ export const verifyPaymentController = asyncHandler(
                     statusCode: 500
                 });
             }
+        }
+    }
+)
+
+export const getAllOrder = asyncHandler(
+    async(req,res) => {
+        try {
+          const userId = req.user._id;
+          
+          //Pagination parameter 
+          const page = parseInt(req.query.page) || 1;
+          const limit = parseInt(req.query.limit) || 10;
+          const skip = (page-1) * limit;
+
+
+          //Sorting parameter
+          const sortBy = req.query.sortBy ||"pickupDate";
+          const sortOrder = req.query.sortOrder === "desc"  ? -1 :1;
+          const status = req.query.status  || "confirmed";
+
+          const allBooking = await Booking.find({
+            userId:userId,
+            status:status
+          }).sort({[sortBy]: sortOrder}).skip(skip).limit(limit);
+
+          if(!allBooking || allBooking.length ===0){
+            throw new ApiError(404,"Sorry, no bookings found");
+          }
+
+          const totaBookings = await Booking.countDocuments({
+            userId:userId,
+            status:status
+          })
+
+          return res.status(200).json({
+            success:true,
+            data: new ApiResponse(200,{
+                bookings:allBooking,
+                totalPages:Math.ceil(totaBookings/limit)
+            },"Success")
+          })
+          
+        } catch (error) {
+            if(error instanceof ApiError){
+                return res.status(error.statusCode).json({
+                    success:false,
+                    message:error.message,
+                    statusCode:error.statusCode
+                })
+
+            }
+            return res.status(500).json({
+                success:false,
+                message :"Internal Server Error",
+                statusCode:500
+            })
         }
     }
 )
