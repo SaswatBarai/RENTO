@@ -24,9 +24,7 @@ const Testimonials = () => {
     return Array.from({ length: 5 }, (_, i) => (
       <svg
         key={i}
-        className={`w-5 h-5 ${
-          i < rating ? 'text-yellow-400' : 'text-gray-300'
-        }`}
+        className={`w-5 h-5 ${i < rating ? 'text-yellow-400' : 'text-gray-600'} transition-transform duration-300 group-hover:scale-110`}
         fill="currentColor"
         viewBox="0 0 20 20"
       >
@@ -36,16 +34,16 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#101e36] via-[#0a1627] to-[#101e36] relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-[#101e36] via-[#0a1627] to-[#101e36] relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#0a1627,rgba(10,22,39,0.6))] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#0a1627,rgba(10,22,39,0.7))] pointer-events-none"></div>
       
-      <div className="container mx-auto px-4 text-center relative z-10">
+      <div className="container mx-auto px-6 text-center relative z-10">
         <div className="mb-16 animate-fade-in">
-          <h2 className="text-5xl font-extrabold mb-4 lg:text-6xl text-white">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight">
             What Our Customers Say
           </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
             Discover why thousands of customers trust us for their rental needs
           </p>
         </div>
@@ -54,13 +52,13 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="group relative p-8 bg-[#16213a] shadow-xl rounded-2xl border border-blue-900/30 hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 hover:bg-[#1c2847]"
+              className="group relative p-8 bg-[#16213a]/80 backdrop-blur-sm shadow-xl rounded-2xl border border-blue-900/20 hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 hover:bg-[#1c2847]/90"
               style={{
                 animationDelay: `${index * 200}ms`,
               }}
             >
               {/* Quote icon */}
-              <div className="absolute top-4 right-4 text-blue-800 opacity-30 group-hover:opacity-50 transition-opacity duration-300">
+              <div className="absolute top-4 right-4 text-blue-700 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
                 <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 32 32">
                   <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                 </svg>
@@ -68,11 +66,11 @@ const Testimonials = () => {
 
               {/* Avatar with animated border */}
               <div className="relative mb-6">
-                <div className="w-24 h-24 mx-auto rounded-full p-1 bg-gradient-to-r from-blue-400 to-blue-600 animate-pulse group-hover:animate-none">
+                <div className="w-24 h-24 mx-auto rounded-full p-1 bg-gradient-to-r from-blue-500 to-blue-700 animate-gradient group-hover:animate-none">
                   <img
                     src={testimonial.avatar}
                     alt={testimonial.name}
-                    className="w-full h-full rounded-full object-cover border-4 border-[#0a1627]"
+                    className="w-full h-full rounded-full object-cover border-4 border-[#0a1627] group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               </div>
@@ -83,27 +81,27 @@ const Testimonials = () => {
               </div>
 
               {/* Name */}
-              <h3 className="text-xl font-bold text-blue-300 mb-4 group-hover:text-white transition-colors duration-300">
+              <h3 className="text-xl font-bold text-blue-200 mb-4 group-hover:text-white transition-colors duration-300">
                 {testimonial.name}
               </h3>
 
               {/* Feedback */}
-              <p className="text-gray-300 leading-relaxed italic group-hover:text-gray-200 transition-colors duration-300">
+              <p className="text-gray-200 leading-relaxed italic group-hover:text-white transition-colors duration-300">
                 "{testimonial.feedback}"
               </p>
 
               {/* Animated background gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-transparent opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-800/20 to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
             </div>
           ))}
         </div>
 
         {/* CTA Section */}
         <div className="mt-16 animate-fade-in-up">
-          <p className="text-lg text-gray-300 mb-6">
+          <p className="text-lg md:text-xl text-gray-200 mb-8">
             Join thousands of satisfied customers today!
           </p>
-          <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-full hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+          <button className="px-10 py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-full hover:from-blue-600 hover:to-blue-700 hover:shadow-xl transform hover:scale-105 transition-all duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-[#0a1627]">
             Get Started Now
           </button>
         </div>
@@ -111,25 +109,19 @@ const Testimonials = () => {
 
       <style jsx>{`
         @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
         }
 
         .animate-fade-in {
@@ -137,7 +129,12 @@ const Testimonials = () => {
         }
 
         .animate-fade-in-up {
-          animation: fade-in-up 1s ease-out 0.5s both;
+          animation: fade-in-up 0.8s ease-out 0.5s both;
+        }
+
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
         }
 
         .bg-grid-slate-100 {

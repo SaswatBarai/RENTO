@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Eye, EyeOff, Mail } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useDispatch } from "react-redux";
 import { hideNav, showNav } from "../state/navHideSlice.js"
@@ -14,9 +14,10 @@ import { useLogin, useGoogleSignIn } from "../utils/query.util.js"
 import { Spinner } from "./ui/Spinner.jsx";
 import { toast, Bounce } from "react-toastify";
 import { login } from "../state/authSlice.js"
+import { Home } from "lucide-react";
 import { CookieStorage } from "cookie-storage"
 import { useGoogleLogin } from "@react-oauth/google"
-import {SetSelectedCity} from "../utils/setselectedcity.localStorage.js"
+import { SetSelectedCity } from "../utils/setselectedcity.localStorage.js"
 
 
 export function LoginForm() {
@@ -241,108 +242,116 @@ export function LoginForm() {
   );
 
   return (
-
-    <div className={`w-full min-h-screen flex justify-center items-center bg-zinc-50 p-6 sm:p-10 `}> {/* Using zinc-50 for background */}
-      <Card className="w-full max-w-lg shadow-xl border border-zinc-200 bg-white p-6 rounded-lg"> {/* Using zinc-200 for border */}
-        <CardHeader className="space-y-2 pb-4">
-          <CardTitle className="text-4xl text-center font-extrabold text-blue-700">Login account</CardTitle> {/* Using zinc-900 for title */}
-          <CardDescription className="text-center text-base text-zinc-600 mt-2"> {/* Using zinc-600 for description */}
-            Enter your email and password to access your dashboard
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-3"> {/* Consistent space-y-7 as per RegisterForm */}
-          <form onSubmit={handleSubmit} className="space-y-3"> {/* Consistent space-y-3 as per RegisterForm */}
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-zinc-800">Email</Label> {/* Using zinc-800 for labels */}
-              <Input
-                id="email"
-                type="email"
-                placeholder="john@example.com"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                required
-                className="w-full border-zinc-300 focus:border-blue-500 focus:ring-blue-500 text-zinc-800 p-2.5 rounded-md" /* Consistent border, focus, text, padding, rounded */
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="password" className="text-zinc-800">Password</Label>
-              <div className="relative">
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 p-6">
+      {/* Home Button */}
+      <button
+        onClick={() => { navigate('/home'); dispatch(showNav()); }}
+        className="absolute top-6 left-6 z-10 flex items-center gap-1 px-3 py-1.5 bg-white/90 border border-blue-600 text-blue-600 rounded-full shadow hover:bg-blue-600 hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        aria-label="Go to Home"
+      >
+        <Home className="h-5 w-5" />
+        <span className="hidden sm:inline text-sm font-semibold">Home</span>
+      </button>
+      <div className="w-full max-w-lg mx-auto">
+        <Card className="bg-slate-800/50 backdrop-blur-sm border-slate-700 shadow-xl p-6 rounded-lg">
+          <CardHeader className="space-y-2 pb-4">
+            <CardTitle className="text-4xl text-center font-extrabold text-blue-400">Login Account</CardTitle>
+            <CardDescription className="text-center text-base text-blue-200 mt-2">
+              Enter your email and password to access your dashboard
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-slate-200">Email</Label>
                 <Input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  id="email"
+                  type="email"
+                  placeholder="john@example.com"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                   required
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
-                  className="w-full pr-10 border-zinc-300 focus:border-blue-500 focus:ring-blue-500 text-zinc-800 p-2.5 rounded-md" /* Consistent styling */
+                  className="w-full border-slate-600 bg-slate-900/80 text-slate-100 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 p-3 rounded-md shadow-md"
                 />
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  className="absolute right-0 top-0 h-full px-3 py-2 text-zinc-500 hover:bg-zinc-100 rounded-r-md" /* Consistent text color and hover */
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="password" className="text-slate-200">Password</Label>
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter your password"
+                    required
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    className="w-full pr-10 border-slate-600 bg-slate-900/80 text-slate-100 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 p-3 rounded-md shadow-md"
+                  />
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="absolute right-0 top-0 h-full px-3 py-2 text-slate-400 hover:bg-slate-700 rounded-r-md"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </Button>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="remember" className="border-slate-600 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white" />
+                  <Label htmlFor="remember" className="text-sm font-normal text-slate-300">
+                    Remember me
+                  </Label>
+                </div>
+                <Button variant="link" className="px-0 font-normal text-blue-400 hover:underline">
+                  Forgot password?
                 </Button>
               </div>
+              <Button
+                type="submit"
+                className="w-full mt-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-md shadow-lg transition-all duration-200"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    Signing in... <Spinner size="small" />
+                  </>
+                ) : (
+                  "Sign in"
+                )}
+              </Button>
+            </form>
+
+            <div className="flex items-center gap-3 my-6">
+              <Separator className="flex-1 bg-slate-600" />
+              <span className="text-sm text-slate-300">Or continue with</span>
+              <Separator className="flex-1 bg-slate-600" />
             </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <Checkbox id="remember" className="border-zinc-300 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white" /> {/* Consistent checkbox styling */}
-                <Label htmlFor="remember" className="text-sm font-normal text-zinc-700"> {/* Using zinc-700 for label text */}
-                  Remember me
-                </Label>
-              </div>
-              <Button variant="link" className="px-0 font-normal text-blue-600 hover:underline"> {/* Consistent link styling */}
-                Forgot password?
+
+            <div className="grid grid-cols-1 gap-4">
+              <Button
+                variant="outline"
+                onClick={(e) => handleGoogleLogin(e)}
+                className="w-full border-slate-600 bg-slate-900/80 hover:bg-blue-950 text-slate-200 flex items-center justify-center gap-2 py-3 rounded-md shadow-md transition-all duration-200"
+              >
+                <GoogleLogo />
+                Continue with Google
               </Button>
             </div>
-            <Button
-              type="submit"
-              className="w-full mt-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2.5 rounded-md transition-colors duration-200 ease-in-out" /* Consistent button styling */
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <>
-                  Signing in... <Spinner size="small" />
-                </>
-              ) : (
-                "Sign in"
-              )}
-            </Button>
-          </form>
 
-          {/* Separator and Google sign-in at the bottom, as per request */}
-          <div className="flex items-center gap-3 my-6">
-            <Separator className="flex-1 bg-zinc-300" /> {/* Using zinc-300 for separator */}
-            <span className="text-sm text-zinc-600">Or continue with</span> {/* Using zinc-600 for text */}
-            <Separator className="flex-1 bg-zinc-300" />
-          </div>
-
-          <div className="grid grid-cols-1 gap-4">
-            <Button
-              variant="outline"
-              onClick={(e) => handleGoogleLogin(e)}
-              className="w-full border-zinc-300 bg-white hover:bg-zinc-100 text-zinc-700 flex items-center justify-center gap-2 py-2.5 rounded-md transition-colors duration-200 ease-in-out" /* Consistent outline button styling */
-            >
-              <GoogleLogo />
-              Continue with Google
-            </Button>
-          </div>
-
-          {/* Link to Register Form */}
-          <p className="text-center text-sm text-zinc-600 ">
-            Don't have an account?{' '}
-            <Button
-              onClick={() => navigate('/register')}
-              variant="link"
-              className="px-0 h-auto font-normal text-sm text-blue-600 hover:underline">
-              Sign up
-            </Button>
-          </p>
-        </CardContent>
-      </Card>
+            <p className="text-center text-sm text-slate-300 mt-4">
+              Don't have an account?{' '}
+              <Button
+                onClick={() => navigate('/register')}
+                variant="link"
+                className="px-0 h-auto font-normal text-sm text-blue-400 hover:underline">
+                Sign up
+              </Button>
+            </p>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

@@ -13,6 +13,9 @@ import {AuthCheck} from "./utils/checkAuth.js"
 import { ErrorSection } from './pages/Error.jsx';
 import {SingleVehicle} from "./pages/SingleVehicle.jsx"
 import Bookings from "./pages/Bookings.jsx"
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx"
+import ReturnPolicy from './pages/ReturnPolicy.jsx';
+import TermAndCondition from './pages/TermAndCondition.jsx';
 // import Booking from '../../backend/src/models/booking.model.js';
 // import {SetSelectedCity} from "./utils/setselectedcity.localStorage.js"
 
@@ -29,7 +32,9 @@ function App() {
         <Route path='/rentals/:vehicleId' element={<SingleVehicle/>} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/help' element={<Help />} />
-      
+        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+        <Route path='/return-policy' element={<ReturnPolicy />} />
+        <Route path='/term-and-condition' element={<TermAndCondition />} />
         <Route path='/first/Setlocation' element={<Location />} />
         <Route path="/login" element={
           <GoogleWrapper>

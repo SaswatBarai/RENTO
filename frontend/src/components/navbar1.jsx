@@ -26,6 +26,7 @@ import {
 import { Profile } from "../components/Profile.jsx";
 import { setSelectedCity } from "../state/locationSlice.js";
 import { SetSelectedCity } from "../utils/setselectedcity.localStorage.js";
+import {useLogout} from "../utils/query.util.js"
 
 const menu = [
   { title: "Home", url: "/" },
@@ -52,13 +53,15 @@ const cities = [
 
 const Navbar1 = () => {
   const dispatch = useDispatch();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const hide = useSelector((state) => state.navHide.isHide);
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
   const profileUrl = user?.profilePicture || null;
   const userLocation = useSelector((state) => state.auth.location);
   const selectedCity = useSelector((state) => state.location.selectedCity);
+
+  const logoutMutation = useLogout();
 
   SetSelectedCity();
 
@@ -72,8 +75,19 @@ const Navbar1 = () => {
     }
   };
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    try {
+      await logoutMutation.mutateAsync();
+      console.log("Logout successful");
+      
+      // Redirect to home page after logout
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
 
   const displayCity = selectedCity || userLocation || "";
@@ -153,7 +167,7 @@ const Navbar1 = () => {
                   <span className="text-sm font-medium text-white">Online</span>
                 </div>
                 <Profile profileUrl={`${profileUrl}`} />
-                {isDropdownOpen && (
+                {isDropdownOpen && isAuth && (
                   <div className="absolute top-12 right-0 bg-[#101e36] border border-blue-500/30 rounded-lg shadow-lg w-48">
                     <ul className="flex flex-col">
                       <li className="px-4 py-2 hover:bg-blue-500 hover:text-white transition-all">
@@ -163,7 +177,12 @@ const Navbar1 = () => {
                         <RouterLink to="/profile">Profile</RouterLink>
                       </li>
                       <li className="px-4 py-2 hover:bg-blue-500 hover:text-white transition-all">
-                        <RouterLink to="/logout">Logout</RouterLink>
+                        <button 
+                          onClick={handleLogout}
+                          className="w-full text-left"
+                        >
+                          Logout
+                        </button>
                       </li>
                     </ul>
                   </div>

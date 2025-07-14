@@ -6,7 +6,7 @@ import User from "../models/user.model.js";
 export const authMiddleware = asyncHandler(
     async(req, res, next) => {
         try {
-            const token = req.headers?.authorization?.split(" ")[1] || req.cookies?.refreshToken;
+            const token = req.headers?.authorization?.split(" ")[1] || req.cookies?.accessToken;
             if(!token){
                 throw new ApiError(401, "You are not authorized to access this resource");
             }

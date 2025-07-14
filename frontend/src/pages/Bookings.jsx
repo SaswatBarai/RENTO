@@ -110,6 +110,13 @@ function Bookings() {
     }
   };
 
+  const formatTime12Hour = (time24) => {
+    const [hours, minutes] = time24.split(":");
+    const hours12 = (hours % 12) || 12;
+    const amPm = hours < 12 ? "AM" : "PM";
+    return `${hours12}:${minutes} ${amPm}`;
+  };
+
   // Generate page numbers for pagination
   const getPageNumbers = () => {
     const pages = [];
@@ -337,7 +344,7 @@ function Bookings() {
                       <div className="flex items-center gap-2 text-slate-300">
                         <Clock className="h-4 w-4 text-blue-400" />
                         <span className="text-sm font-medium">Pickup Time:</span>
-                        <span className="text-white font-mono">{booking.pickupTime}</span>
+                        <span className="text-white font-mono">{formatTime12Hour(booking.pickupTime)}</span>
                       </div>
                       
                       <div className="flex items-center gap-2 text-slate-300">

@@ -10,11 +10,11 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-semibold text-blue-400 mb-4 tracking-tight">
-              About Us
+              About RENTO
             </h3>
             <p className="text-gray-300 leading-relaxed text-base">
-              We deliver exceptional rental services focused on quality, trust,
-              and customer satisfaction. Discover what makes us unique.
+              We deliver exceptional vehicle rental services focused on quality, trust,
+              and customer satisfaction. Your perfect ride awaits.
             </p>
           </div>
 
@@ -25,10 +25,13 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3">
               {[
-                { name: "Home", href: "#" },
-                { name: "Services", href: "#" },
-                { name: "About", href: "#" },
-                { name: "Contact", href: "#" },
+                { name: "Home", href: "/home" },
+                { name: "Rentals", href: "/rentals" },
+                { name: "Bookings", href: "/bookings" },
+                { name: "Contact", href: "/contact" },
+                { name: "Privacy Policy", href: "/privacy-policy" },
+                { name: "Return Policy", href: "/return-policy" },
+                { name: "Consumer Policy", href: "/term-and-condition" },
               ].map((link, index) => (
                 <li key={index}>
                   <a
@@ -50,15 +53,15 @@ const Footer = () => {
             <ul className="space-y-3 text-gray-300 text-base">
               <li>
                 <i className="fas fa-envelope mr-2 text-blue-400"></i>
-                support@rental.com
+                saswatbarai611@gmail.com
               </li>
               <li>
                 <i className="fas fa-phone mr-2 text-blue-400"></i>
-                +1 (800) 123-4567
+                +91 7978826224
               </li>
               <li>
                 <i className="fas fa-map-marker-alt mr-2 text-blue-400"></i>
-                123 Rental St, Suite 100
+                ITER, Bhubaneswar, Odisha, India
               </li>
             </ul>
           </div>
@@ -89,7 +92,7 @@ const Footer = () => {
               asChild
               className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-6 py-2 transition-colors duration-200"
             >
-              <a href="#">Get Started</a>
+              <a href="/rentals">Find Your Ride</a>
             </Button>
           </div>
         </div>
@@ -97,7 +100,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-blue-900/30 text-center">
           <p className="text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} Rental Services. All rights reserved.
+            &copy; {new Date().getFullYear()} RENTO. All rights reserved.
           </p>
         </div>
       </div>

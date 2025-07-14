@@ -10,7 +10,8 @@ import {
   getVehicleByLocation,
   createOrder,
   verifyPayment,
-  getBookings
+  getBookings,
+  logout
 } from "./axios.js";
 
 export const useLogin = () => {
@@ -22,6 +23,17 @@ export const useLogin = () => {
 export const useRegister = () => {
   return useMutation({
     mutationFn: register,
+  });
+};
+
+export const useLogout = () => {
+/*
+useQuery to useMutation - Logout should be a mutation, not a query
+Now uses mutateAsync() to call the logout function in navbar
+*/
+
+  return useMutation({
+    mutationFn: logout,
   });
 };
 

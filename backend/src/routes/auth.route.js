@@ -17,7 +17,7 @@ const router = Router();
 router.post("/register",validate(registerSchema),registerController);
 router.post("/login",validate(loginSchema),loginController); 
 router.get("/logout",authMiddleware,logoutController);
-router.get("/getNewAccessToken/:refreshToken",authMiddleware,getNewAccessToken);
+router.get("/refresh",getNewAccessToken);
 router.post("/google",googleController);
 router.patch("/setLocation",optionalAuthMiddleware,setLocationController);
 router.get("/getLocation",optionalAuthMiddleware,getLocationController);

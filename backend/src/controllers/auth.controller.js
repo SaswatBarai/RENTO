@@ -226,6 +226,7 @@ export const googleController = asyncHandler(async (req, res) => {
 
 export const logoutController = asyncHandler(async (req, res) => {
   try {
+    console.log("Logging out user:", req.user);
     const user = req.user;
     if (!user) {
       throw new ApiError(401, "You are not authorized to access this resource");
@@ -256,7 +257,9 @@ export const logoutController = asyncHandler(async (req, res) => {
 
 export const getNewAccessToken = asyncHandler(async (req, res) => {
   try {
-    const { refreshToken } = req.params;
+    // const { refreshToken } = req.params;
+    const refreshToken = req.cookies?.refreshToken;
+    console.log(refreshToken)
     if (!refreshToken) {
       throw new ApiError(400, "Refresh token is required");
     }
@@ -291,6 +294,7 @@ export const getNewAccessToken = asyncHandler(async (req, res) => {
         ),
       });
   } catch (error) {
+    console.log(error.message);
     if (error instanceof ApiError) {
       return res.status(error.statusCode).json({
         success: false,
