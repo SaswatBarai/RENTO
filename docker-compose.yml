@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5001:5001"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/rento
+      - JWT_SECRET=your-jwt-secret-here
+      - CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
+      - CLOUDINARY_API_KEY=your-cloudinary-api-key
+      - CLOUDINARY_API_SECRET=your-cloudinary-api-secret
+      - RAZORPAY_KEY_ID=your-razorpay-key-id
+      - RAZORPAY_KEY_SECRET=your-razorpay-key-secret
+      - PORT=5001
+      - NODE_ENV=development
+    depends_on:
+      - mongo
+    networks:
+      - rento-network
+
+  mongo:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=rento
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - rento-network
+
+volumes:
+  mongo_data:
+
+networks:
+  rento-network:
+    driver: bridge
