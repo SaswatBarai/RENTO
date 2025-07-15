@@ -84,7 +84,7 @@ export const addVehicleController = asyncHandler(async (req, res) => {
     } catch (error) {
         console.error("Error in addVehicleController:", error);
         if (error instanceof ApiError) {
-            console.log(error.message)
+            
             return res.status(error.statusCode).json({
                 success: false,
                 message: error.message,
@@ -102,7 +102,7 @@ export const addVehicleController = asyncHandler(async (req, res) => {
 export const removeVehicleController = asyncHandler(async (req, res) => {
     try {
         const { vehicleId } = req.params;
-        console.log(vehicleId);
+       
         if (!vehicleId) {
             throw new ApiError(400, "Vehicle ID is required");
         }
@@ -122,7 +122,7 @@ export const removeVehicleController = asyncHandler(async (req, res) => {
             data: new ApiResponse(200, null, "Vehicle removed successfully"),
         });
     } catch (error) {
-        // console.log(error.message);
+       
         if (error instanceof ApiError) {
             res.status(error.statusCode).json({
                 success: false,
@@ -151,7 +151,7 @@ export const getVehicleController = asyncHandler(async (req, res) => {
         const userId = req.user?._id;
 
         if (userId && mongoose.isValidObjectId(userId)) {
-            console.log("Mark 1")
+            
             const vehicleData = await Vehicle.aggregate([
                 {
                     $match: {

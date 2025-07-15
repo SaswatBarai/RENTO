@@ -78,7 +78,7 @@ export const createOrderController = asyncHandler(
                     data: new ApiResponse(200, { ...order, bookingId: booking._id }, "Order created successfully"),
                 })
             } catch (error) {
-                console.log(error)
+                
                 vehicle = await Vehicle.findByIdAndUpdate(vehicleId, {
                     availability: true,
                 });
@@ -90,7 +90,7 @@ export const createOrderController = asyncHandler(
             }
             
         } catch (error) {
-            console.log(error.message)
+        
             if (error instanceof ApiError) {
                 return res.status(error.statusCode).json({
                     success: false,
@@ -114,8 +114,7 @@ export const verifyPaymentController = asyncHandler(
         try {
             const { orderId, paymentId, signature, bookingId } = req.body;
             
-            console.log("Received payment verification request:", { orderId, paymentId, signature, bookingId });
-            console.log("Request body:", req.body);
+           
             
             if (!orderId || !paymentId || !signature) {
                 return res.status(400).json({
@@ -154,7 +153,7 @@ export const verifyPaymentController = asyncHandler(
                 })
             }
 
-            console.log("Signature verified successfully, updating booking:", bookingId);
+        
 
             const booking = await Booking.findByIdAndUpdate(
                 bookingId, 
@@ -166,10 +165,10 @@ export const verifyPaymentController = asyncHandler(
                 { new: true } // Return the updated document
             );
             
-            console.log("Booking update result:", booking);
+           
             
             if (!booking) {
-                console.log("Booking not found with ID:", bookingId);
+              
                 return res.status(404).json({
                     success: false,
                     data: new ApiResponse(404, null, "Booking not found")
@@ -240,7 +239,7 @@ export const getAllOrder = asyncHandler(
           })
           
         } catch (error) {
-            console.log(error.message);
+            
             if(error instanceof ApiError){
                 return res.status(error.statusCode).json({
                     success:false,

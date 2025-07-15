@@ -76,7 +76,7 @@ export const loginController = asyncHandler(async (req, res) => {
     if (!existingUser) {
       throw new ApiError(400, "Invalid Credentails1");
     }
-    // console.log("HELLLLLLL");
+
     const isMatch = await existingUser.isPasswordMatch(password);
 
     if (!isMatch) {
@@ -92,7 +92,7 @@ export const loginController = asyncHandler(async (req, res) => {
     const user = await User.findOne({ email }).select(
       "-password -refreshToken"
     );
-    console.log(user);
+  
 
     let visibleLocationForm = true;
     if(user.location || user.location.trim() !== ''){
@@ -133,11 +133,8 @@ export const loginController = asyncHandler(async (req, res) => {
 export const googleController = asyncHandler(async (req, res) => {
   try {
     // Log the entire request body to see what we're working with
-    // console.log("Google login request body:", req.body);
     
     const accessToken = req.body.accessToken;
-    console.log(accessToken)
-    console.log("Received access token:", accessToken);
 
     if (!accessToken) {
       throw new ApiError(
@@ -149,10 +146,8 @@ export const googleController = asyncHandler(async (req, res) => {
     if (typeof accessToken !== 'string' || accessToken.length < 10) {
       throw new ApiError(400, "Invalid access token format");
     }
-    
-    console.log("About to call detailGoogle with token:", accessToken);
     const user = await detailGoogle(accessToken);
-    console.log("detailGoogle response:", user.data);
+
     
     if (!user || !user.data || !user.data.email) {
       throw new ApiError(400, "Failed to fetch user data from Google");
@@ -184,7 +179,6 @@ export const googleController = asyncHandler(async (req, res) => {
       NewUser._id
     );
     
-    console.log("NewUser location value:", NewUser.location);
     let visibleLocationForm = true; 
     if(NewUser.location && NewUser.location.trim() !== "") {
       visibleLocationForm = false;
@@ -226,7 +220,7 @@ export const googleController = asyncHandler(async (req, res) => {
 
 export const logoutController = asyncHandler(async (req, res) => {
   try {
-    console.log("Logging out user:", req.user);
+   
     const user = req.user;
     if (!user) {
       throw new ApiError(401, "You are not authorized to access this resource");
@@ -259,7 +253,7 @@ export const getNewAccessToken = asyncHandler(async (req, res) => {
   try {
     // const { refreshToken } = req.params;
     const refreshToken = req.cookies?.refreshToken;
-    console.log(refreshToken)
+    
     if (!refreshToken) {
       throw new ApiError(400, "Refresh token is required");
     }
@@ -294,7 +288,7 @@ export const getNewAccessToken = asyncHandler(async (req, res) => {
         ),
       });
   } catch (error) {
-    console.log(error.message);
+   
     if (error instanceof ApiError) {
       return res.status(error.statusCode).json({
         success: false,
@@ -330,7 +324,7 @@ export const setLocationController = asyncHandler(async(req,res) => {
     });
     
   } catch (error) {
-    console.log(error.message)
+
     if (error instanceof ApiError) {
       return res.status(error.statusCode).json({
         success: false,

@@ -15,36 +15,36 @@ console.log("Cloudinary configured with cloud_name:", process.env.CLOUDINARY_CLO
 export const uploadOnCloudinary = async (filePath) => {
     try {
         if (!filePath) {
-            console.log("No file path provided");
+           
             return null;
         }
 
         if (!fs.existsSync(filePath)) {
-            console.log("File does not exist at path:", filePath);
+            
             return null;
         }
 
-        console.log("Uploading file to Cloudinary:", filePath);
+      
 
         const response = await cloudinary.uploader.upload(filePath, {
             folder: "rento",
             resource_type: "auto",
         });
 
-        console.log("Cloudinary upload successful:", response.public_id);
+        
 
         fs.unlinkSync(filePath);
         return response;
 
     } catch (error) {
-        console.error("Cloudinary upload error:", error);
+    
         
         try {
             if (fs.existsSync(filePath)) {
                 fs.unlinkSync(filePath);
             }
         } catch (unlinkError) {
-            console.error("Error removing file:", unlinkError);
+            
         }
         
         return null; 
@@ -59,7 +59,7 @@ export const deleteFromCloudinary = async(publicId) => {
         });
         return response;
     } catch (error) {
-        console.error("Cloudinary delete error:", error);
+       
         throw new Error("Failed to delete image from Cloudinary");
     }
 }
